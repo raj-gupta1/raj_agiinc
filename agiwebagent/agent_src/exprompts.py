@@ -1,4 +1,4 @@
-# agiwebagent/agent_src/prompts/omnizon_prompts.py
+# agent_src/exprompts.py
 
 PLANNING_SYSTEM_PROMPT = """You are a master planner for a web automation agent. Your task is to create a concise, atomic, step-by-step plan to achieve the user's goal using ONLY the tools provided in the Action Space.
 
@@ -14,7 +14,7 @@ Before creating a plan, analyze the goal for complex product names or search ter
 # General E-commerce Shopping Workflow
 To assist you, here is the standard end-to-end process a person follows to buy a product online:
 1.  **Search:** The user starts by typing a product name into the search bar and clicking the search button.
-2.  **Browse Search Results:** The user looks at the list of resulting products. **If the desired item is not visible, they scroll down.**
+2.  **Browse Search Results:** The user looks at the list of resulting products.
 3.  **View Product Details:** The user clicks on a specific product to see more details on its dedicated page.
 4.  **Add to Cart/Buy Now:** On the product detail page, the user clicks "Add to Cart" or "Buy Now".
 5.  **Handle Quantity/Options:** If the user wants more than one item, they first find and click the quantity dropdown/button, then click the desired number (e.g., '5').
@@ -34,9 +34,8 @@ To assist you, here is the standard end-to-end process a person follows to buy a
     - For "checkout", create separate steps for filling each field (name, card number, etc.) and clicking the final button.
     - For "retrieve all listings," create steps to read the name and price of *each* item individually before announcing the final compiled list.
 4.  **Handle Dropdowns/Comboboxes:** For elements that are not simple text fields (like quantity or expiration dates), the plan must first `click` the element to reveal the options, and then `click` the desired option in a subsequent step.
-5.  **Anticipate Scrolling:** If a goal requires finding an element that might be off-screen (like a specific category or a "Place Order" button at the bottom of a page), you MUST include a `scroll(0, 500)` step *before* the step that tries to click it.
-6.  **Retrieval Logic:** If the goal is to "retrieve" or "display" information, the plan must include steps to read each piece of information from the screen before the final "Announce..." step.
-7.  **Respond ONLY with the numbered list plan.**
+5.  **Retrieval Logic:** If the goal is to "retrieve" or "display" information, the plan must include steps to read each piece of information from the screen before the final "Announce..." step.
+6.  **Respond ONLY with the numbered list plan.**
 
 ---
 **EXAMPLE of a Perfect Plan:**
@@ -107,17 +106,11 @@ SELF_CRITIQUE_PROMPT = """
 Your last action for Step {current_step_number} failed with the error: "{error_message}"
 
 **CRITICAL ANALYSIS:**
-1.  **Error Diagnosis:** Why did my action fail? Was the `bid` wrong? Was the action name invalid? Or is the element for my current plan step simply not on the screen right now?
-
-2.  **Plan Validity & Common Sense Recovery:** Is my current plan step impossible from this specific screen?
-    - **IF you cannot find a 'Buy Now' or 'Add to Cart' button,** THEN you are likely on a homepage or search results page. Your immediate recovery action should be to `click` on any product's title or image to navigate to its detail page, where the button will exist.
-    - **IF you cannot find a specific form field (e.g., 'Card Number'),** THEN you are likely not on the checkout page. Your recovery action should be to find and `click` the 'Cart' or 'Checkout' button.
-    - **IF you cannot find an element you expected,** THEN it might be off-screen. Your recovery action should be to `scroll(0, 500)` to look for it.
-
+1.  **Error Diagnosis:** Why did my action fail? Was the `bid` wrong? Was the action name invalid (not in the Action Space)?
+2.  **Plan Validity:** Is my current plan still achievable? Or is the plan itself flawed?
 3.  **New Strategy:** Based on my analysis, I will now formulate a new response.
-    - If a common-sense recovery action is needed, I will perform it now, even though it's not in the plan. This is a necessary detour.
-    - If the plan is still valid and the `bid` was just wrong, I will re-Orient, re-Decide, and provide a corrected Action.
-    - If the plan is fundamentally flawed, I will start my response with "New Plan:" followed by a completely new, atomic plan (including Start and End).
+    - If the plan is still valid, I will re-Orient, re-Decide, and provide a corrected Action.
+    - If the plan is invalid, I will start my response with "New Plan:" followed by a completely new, atomic plan (including Start and End).
 
 **Your New Response (following the OODA format):**
 """
