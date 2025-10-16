@@ -1,4 +1,0 @@
-2025-10-15 23:53:05,886 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-2_730 in:
-  results/2025-10-15_23-53-05_HighPerformanceAgent_on_webclones.omnizon-2_730_940c9fd08a6847989b369fbb0aa1ac55
-2025-10-15 23:53:05,896 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
-2025-10-15 23:53:05,896 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.

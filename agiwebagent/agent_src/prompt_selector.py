@@ -1,63 +1,109 @@
-# agent_src/prompt_selector.py
+# agiwebagent/agent_src/prompt_selector.py
 
 import importlib
-from .prompts import base_prompts
+from openai import OpenAI
 
 
 class PromptSelector:
-    # Map the task_id prefix to the prompt module
-    PROMPT_ROUTING = {
-        "omnizon": "agent_src.prompts.ecommerce_prompts",
-        "dashdish": "agent_src.prompts.dashdish_prompts",
-        "fly-unified": "agent_src.prompts.flyunified_prompts",
-        "gocalendar": "agent_src.prompts.gocalendar_prompts",
-        "networkin": "agent_src.prompts.networkIn_prompts",
-        "opendining": "agent_src.prompts.opendining_prompts",
-        "staynb": "agent_src.prompts.staynb_prompts",
-        "topwork": "agent_src.prompts.topwork_prompts",
-        "udriver": "agent_src.prompts.udriver_prompts",
-        "zilloft": "agent_src.prompts.zilloft_prompts",
-        "marrisuite": "agent_src.prompts.marrisuite_prompts",
+    PROMPT_PROFILES = {
+        "ecommerce": {
+            "description": "Handles online shopping on sites like Omnizon: searching products, adding to a cart, and checking out.",
+            "path": "agent_src.prompts.omnizon_prompts"
+        },
+        "food_delivery": {
+            "description": "Handles food delivery on sites like DashDish: browsing restaurants, adding menu items to an order, and checking out.",
+            "path": "agent_src.prompts.dashdish_prompts"
+        },
+        "flight_booking": {
+            "description": "Handles booking flights on sites like Fly Unified: searching routes, selecting dates, and entering passenger info.",
+            "path": "agent_src.prompts.flyunified_prompts"
+        },
+        "hotel_booking": {
+            "description": "Handles booking hotel stays on sites like Marrisuite: searching for hotels by destination and date, and completing reservations.",
+            "path": "agent_src.prompts.marrisuite_prompts"
+        },
+        "accommodation_booking": {
+            "description": "Handles booking vacation rentals on sites like Staynb: searching properties, selecting dates, and simulating a booking.",
+            "path": "agent_src.prompts.staynb_prompts"
+        },
+        "restaurant_reservation": {
+            "description": "Handles booking tables at restaurants on sites like OpenDining for a specific date, time, and party size.",
+            "path": "agent_src.prompts.opendining_prompts"
+        },
+        "ride_sharing": {
+            "description": "Handles ride-sharing tasks on sites like UDriver: booking a ride between two locations and comparing prices.",
+            "path": "agent_src.prompts.udriver_prompts"
+        },
+        "calendar": {
+            "description": "Handles scheduling on sites like GoCalendar: creating, modifying, or deleting events and managing calendars.",
+            "path": "agent_src.prompts.gocalendar_prompts"
+        },
+        "professional_networking": {
+            "description": "Handles tasks on professional social media like NetworkIn: finding jobs or people, and sending messages.",
+            "path": "agent_src.prompts.networkIn_prompts"
+        },
+        "freelancer_marketplace": {
+            "description": "Handles tasks on freelancer sites like TopWork: posting jobs, searching for freelancers, and managing hiring.",
+            "path": "agent_src.prompts.topwork_prompts"
+        },
+        "real_estate": {
+            "description": "Handles real estate tasks on sites like Zilloft: searching for homes, filtering properties, and viewing listings.",
+            "path": "agent_src.prompts.zilloft_prompts"
+        }
     }
 
-    # --- CORRECTED DEFAULTS ---
-    # The new general prompt is now the default for any unrecognized task.
-    DEFAULT_PROMPT = "agent_src.prompts.general_prompts"
-    RETRIEVAL_PROMPT = "agent_src.prompts.retrieval_prompts"
+    BASE_PROMPTS_PATH = "agent_src.prompts.base_prompts"
 
     @staticmethod
-    def get_prompts_for_task(task_id: str, goal: str):
-        """
-        Selects the appropriate prompt module based on the task_id or goal keywords.
-        """
-        task_prefix = task_id.split('-')[0].lower()
-        specific_prompts_module = PromptSelector.PROMPT_ROUTING.get(task_prefix)
+    def _select_profile_with_llm(goal: str, client: OpenAI):
+        profile_descriptions = "\n".join(
+            f"- **{name}**: {data['description']}" for name, data in PromptSelector.PROMPT_PROFILES.items())
+        system_prompt = f"""
+            You are an expert routing system. Your task is to select the most appropriate "prompt profile" for a given user goal.
+            Respond with ONLY the name of the chosen profile (e.g., "ecommerce").
+            If no profile is a good match, respond with "base".
 
-        if specific_prompts_module:
-            print(f"✅ Prompt Selector: Task ID '{task_prefix}' detected. Loading specialized prompts.")
-        else:
-            goal_lower = goal.lower()
-            retrieval_keywords = ["find", "retrieve", "list", "what is", "search for", "display", "identify"]
-            if any(keyword in goal_lower for keyword in retrieval_keywords):
-                print(f"✅ Prompt Selector: Retrieval task detected for '{task_prefix}'. Loading retrieval prompts.")
-                specific_prompts_module = PromptSelector.RETRIEVAL_PROMPT
-            else:
-                print(f"⚠️ Prompt Selector: No specific prompts for '{task_prefix}'. Using general-purpose default.")
-                specific_prompts_module = PromptSelector.DEFAULT_PROMPT
-
-        # The rest of the file remains the same...
+            Available Profiles:
+            {profile_descriptions}
+            - **base**: A general-purpose profile for tasks that do not fit other categories.
+            """
         try:
-            specific_prompts = importlib.import_module(specific_prompts_module)
-        except ImportError:
-            print(f"🔥🔥🔥 CRITICAL FAILURE: Could not import prompt module {specific_prompts_module}")
-            from .prompts import general_prompts as specific_prompts  # Fallback to general
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "system", "content": system_prompt},
+                          {"role": "user", "content": f"User Goal: \"{goal}\""}],
+                temperature=0, max_tokens=20
+            )
+            return response.choices[0].message.content.strip().lower()
+        except Exception as e:
+            print(f"🔥🔥🔥 LLM ROUTER FAILED: {e}. Defaulting to 'base'.")
+            return "base"
 
-        class Prompts:
-            PLANNING_SYSTEM_PROMPT = getattr(specific_prompts, 'PLANNING_SYSTEM_PROMPT', "")
-            EXECUTION_SYSTEM_PROMPT = base_prompts.EXECUTION_SYSTEM_PROMPT
-            ACTION_SPACE_PROMPT = base_prompts.ACTION_SPACE_PROMPT
-            FEW_SHOT_EXAMPLE_PROMPT = base_prompts.FEW_SHOT_EXAMPLE_PROMPT
-            EXECUTION_USER_CONTEXT = base_prompts.EXECUTION_USER_CONTEXT
-            SELF_CRITIQUE_PROMPT = base_prompts.SELF_CRITIQUE_PROMPT
+    @staticmethod
+    def get_prompts_for_goal(goal: str, client: OpenAI):
+        print(f"🎯 Goal: {goal}")
 
-        return Prompts()
+        # For now, always use base prompts to avoid import issues
+        print("⚙️ Using base prompts for all tasks (specialized prompts disabled)")
+        chosen_profile_name = "base"
+
+        # Uncomment below to enable LLM-based routing
+        chosen_profile_name = PromptSelector._select_profile_with_llm(goal, client=client)
+        print(f"🧠 LLM Router selected profile: '{chosen_profile_name}'")
+
+        if chosen_profile_name in PromptSelector.PROMPT_PROFILES:
+            module_path = PromptSelector.PROMPT_PROFILES[chosen_profile_name]['path']
+            print(f"📦 Loading specialized prompts from: {module_path}")
+        else:
+            module_path = PromptSelector.BASE_PROMPTS_PATH
+            print(f"⚙️ Loading default base prompts from: {module_path}")
+
+        try:
+            module = importlib.import_module(module_path)
+            print(f"✅ Successfully loaded prompts from: {module_path}")
+            return module
+        except ImportError as e:
+            print(f"🔥🔥🔥 CRITICAL FAILURE: Could not import {module_path}. Error: {e}")
+            print("🔄 Falling back to base_prompts...")
+            from .prompts import base_prompts
+            return base_prompts
