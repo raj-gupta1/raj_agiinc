@@ -1,4 +1,4 @@
-# agent_src/prompts.py
+# agent_src/exprompts.py
 
 PLANNING_SYSTEM_PROMPT = """You are a master planner for a web automation agent. Your task is to create a concise, atomic, step-by-step plan to achieve the user's goal using ONLY the tools provided in the Action Space.
 

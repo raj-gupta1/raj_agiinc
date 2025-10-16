@@ -2,13 +2,15 @@
 
 import time
 from openai import OpenAI, RateLimitError
-from . import prompts, utils
+from . import utils # MODIFIED: No longer need to import 'prompts' directly
 from .memory import AgentMemory
 
 
 class HighPerformanceAgent:
-    def __init__(self, config):
+    # MODIFIED: Add 'prompts' object to the constructor
+    def __init__(self, config, prompts):
         self.config = config
+        self.prompts = prompts # Store the passed-in prompts object
         self.client = OpenAI()
 
     def _call_llm_with_retry(self, **kwargs):
@@ -29,10 +31,11 @@ class HighPerformanceAgent:
                     raise e
 
     def generate_plan(self, obs: dict, action_desc: str) -> str:
-        system_msgs = [{"type": "text", "text": prompts.PLANNING_SYSTEM_PROMPT}]
+        # MODIFIED: Use self.prompts instead of the global import
+        system_msgs = [{"type": "text", "text": self.prompts.PLANNING_SYSTEM_PROMPT}]
         user_msgs = [
             {"type": "text", "text": f"# Goal\n{obs['goal']}"},
-            {"type": "text", "text": prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
+            {"type": "text", "text": self.prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
             {"type": "image_url", "image_url": {"url": utils.image_to_jpg_base64_url(obs["screenshot"])}}
         ]
         response = self._call_llm_with_retry(
@@ -46,11 +49,11 @@ class HighPerformanceAgent:
 
         current_instruction = plan[current_plan_step]
 
-        # Pass the current instruction to the system prompt for focus
-        system_prompt_text = prompts.EXECUTION_SYSTEM_PROMPT.format(current_step_instruction=current_instruction)
+        # MODIFIED: Use self.prompts for all prompt templates
+        system_prompt_text = self.prompts.EXECUTION_SYSTEM_PROMPT.format(current_step_instruction=current_instruction)
         system_msgs = [{"type": "text", "text": system_prompt_text}]
 
-        user_context = prompts.EXECUTION_USER_CONTEXT.format(
+        user_context = self.prompts.EXECUTION_USER_CONTEXT.format(
             goal=obs['goal'],
             plan="\n".join(f"{i + 1}. {s}" for i, s in enumerate(plan)),
             completed_steps=", ".join(str(i) for i in range(1, current_plan_step + 1)) or "None",
@@ -62,13 +65,13 @@ class HighPerformanceAgent:
 
         user_msgs = [
             {"type": "text", "text": user_context},
-            {"type": "text", "text": prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
-            {"type": "text", "text": prompts.FEW_SHOT_EXAMPLE_PROMPT},
+            {"type": "text", "text": self.prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
+            {"type": "text", "text": self.prompts.FEW_SHOT_EXAMPLE_PROMPT},
             {"type": "image_url", "image_url": {"url": utils.image_to_jpg_base64_url(obs["screenshot"])}}
         ]
 
         if last_action_failed and obs.get("last_action_error"):
-            user_msgs.append({"type": "text", "text": prompts.SELF_CRITIQUE_PROMPT.format(
+            user_msgs.append({"type": "text", "text": self.prompts.SELF_CRITIQUE_PROMPT.format(
                 current_step_number=current_plan_step + 1,
                 error_message=obs['last_action_error']
             )})
