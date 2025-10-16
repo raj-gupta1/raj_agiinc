@@ -1,0 +1,62 @@
+{
+    "task_name": "webclones.omnizon-3",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-3_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "d9272ffc-11bf-4914-87bb-61334cff511a",
+    "n_steps": 4,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-3_911",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 5,
+    "stats.cum_n_token_goal": 96,
+    "stats.max_n_token_goal": 24,
+    "stats.cum_n_token_task_id": 20,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 53,
+    "stats.max_n_token_url": 16,
+    "stats.cum_n_token_focused_element_bid": 4,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 15,
+    "stats.max_n_token_last_action": 7,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_dom_txt": 218243,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 23443,
+    "stats.max_n_token_axtree_txt": 6961,
+    "stats.cum_n_token_pruned_html": 130207,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 9.237595796585083,
+    "stats.max_step_elapsed": 4.086647033691406,
+    "stats.cum_agent_elapsed": 30.527132272720337,
+    "stats.max_agent_elapsed": 12.236654996871948,
+    "terminated": true,
+    "truncated": false
+}

@@ -1,0 +1,128 @@
+2025-10-17 00:56:59,358 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-4_887 in:
+  results/2025-10-17_00-56-59_HighPerformanceAgent_on_webclones.omnizon-4_887_9de88805e2474209a4fb2af6bbbec5cc
+2025-10-17 00:56:59,368 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-17 00:56:59,369 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-17 00:57:04,422 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:10,064 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:11,700 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:12,426 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:57:12,427 - openai._base_client - INFO - Retrying request to /chat/completions in 2.107000 seconds
+2025-10-17 00:57:30,431 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:31,173 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:31,217 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'Marshall Emberton II Portable Bluetooth Speaker')
+
+2025-10-17 00:57:46,397 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:47,333 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:47,379 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-17 00:57:48,995 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 00:57:53,985 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:54,904 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:57:54,927 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('634')
+
+2025-10-17 00:58:04,223 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:04,939 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:04,964 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('827')
+
+2025-10-17 00:58:12,068 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:12,690 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:12,724 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+go_back()
+
+2025-10-17 00:58:14,328 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 00:58:14,737 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:14,738 - openai._base_client - INFO - Retrying request to /chat/completions in 1.438000 seconds
+2025-10-17 00:58:16,611 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:16,611 - openai._base_client - INFO - Retrying request to /chat/completions in 1.438000 seconds
+2025-10-17 00:58:28,152 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:29,235 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:29,258 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'Michael Kors Oversized Slim Runway Men\'s Watch')
+
+2025-10-17 00:58:30,865 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 00:58:31,357 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:31,358 - openai._base_client - INFO - Retrying request to /chat/completions in 0.458000 seconds
+2025-10-17 00:58:36,000 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:36,589 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:36,607 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-17 00:58:38,224 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 00:58:38,634 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:38,635 - openai._base_client - INFO - Retrying request to /chat/completions in 1.454000 seconds
+2025-10-17 00:58:43,541 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:44,466 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:58:44,489 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('978')
+
+2025-10-17 00:58:47,246 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:47,247 - openai._base_client - INFO - Retrying request to /chat/completions in 1.861000 seconds
+2025-10-17 00:58:49,995 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:49,996 - openai._base_client - INFO - Retrying request to /chat/completions in 1.861000 seconds
+2025-10-17 00:58:52,655 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:54,500 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:54,501 - openai._base_client - INFO - Retrying request to /chat/completions in 1.861000 seconds
+2025-10-17 00:58:57,028 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:58:57,029 - openai._base_client - INFO - Retrying request to /chat/completions in 0.021000 seconds
+2025-10-17 00:59:00,170 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:59:02,079 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:59:02,106 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('1122')
+
+2025-10-17 00:59:04,842 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:59:04,843 - openai._base_client - INFO - Retrying request to /chat/completions in 1.864000 seconds
+2025-10-17 00:59:07,506 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-17 00:59:07,507 - openai._base_client - INFO - Retrying request to /chat/completions in 1.864000 seconds
+2025-10-17 00:59:19,383 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:00:50,212 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2025-10-17 01:00:50,213 - openai._base_client - INFO - Retrying request to /chat/completions in 0.440546 seconds
+2025-10-17 01:00:51,748 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:00:51,776 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('187')
+
+2025-10-17 01:00:58,116 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:00:58,917 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:00:58,946 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-17 01:01:00,566 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 01:01:05,674 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:01:06,290 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:01:06,313 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('828')
+
+2025-10-17 01:01:06,322 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Could not find element with bid "828"
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 390, in click
+  File "<string>", line 123, in get_elem_by_bid
+ValueError: Could not find element with bid "828"
+2025-10-17 01:01:06,394 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 01:01:19,234 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:01:20,355 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 01:01:20,376 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('187')
+
+2025-10-17 01:01:21,997 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 01:01:22,084 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Task completed successfully based on the plan.")
+
+2025-10-17 01:01:23,695 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.
+2025-10-17 01:01:23,759 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'

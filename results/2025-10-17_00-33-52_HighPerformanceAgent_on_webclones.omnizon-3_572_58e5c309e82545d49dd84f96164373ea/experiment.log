@@ -1,0 +1,30 @@
+2025-10-17 00:33:52,398 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-3_572 in:
+  results/2025-10-17_00-33-52_HighPerformanceAgent_on_webclones.omnizon-3_572_58e5c309e82545d49dd84f96164373ea
+2025-10-17 00:33:52,417 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-17 00:33:52,418 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-17 00:33:57,464 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:01,763 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:03,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:09,238 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:10,262 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:10,352 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 1000)
+
+2025-10-17 00:34:16,302 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:17,327 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:17,370 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('455')
+
+2025-10-17 00:34:19,001 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 00:34:25,929 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:26,851 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:26,878 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('634')
+
+2025-10-17 00:34:35,925 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:39,242 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:39,269 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Product Listings:\n- **Product**: Sony WH-1000XM5 The Best Wireless Noise Canceling Headphones\n- **Price**: $389.00\n- **Rating**: 4.7 from 57,430 ratings\n- **Color**: Black\n- **Brand**: Sony\n- **Features**: Noise cancellation, hands-free calling, long battery life, comfort & style.\n- **Delivery**: FREE delivery on orders over $35.\n- **In Stock**: Yes")
+
+2025-10-17 00:34:42,211 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:34:42,214 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

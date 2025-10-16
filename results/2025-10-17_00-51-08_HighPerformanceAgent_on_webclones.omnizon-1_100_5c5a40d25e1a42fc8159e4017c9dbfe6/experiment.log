@@ -1,0 +1,30 @@
+2025-10-17 00:51:08,997 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-1_100 in:
+  results/2025-10-17_00-51-08_HighPerformanceAgent_on_webclones.omnizon-1_100_5c5a40d25e1a42fc8159e4017c9dbfe6
+2025-10-17 00:51:09,017 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-17 00:51:09,017 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-17 00:51:15,300 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:18,876 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:19,795 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:29,012 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:30,037 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:30,136 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'laptop')
+
+2025-10-17 00:51:36,896 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:37,888 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:37,930 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-17 00:51:39,558 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-17 00:51:43,361 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:43,964 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:43,988 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('634')
+
+2025-10-17 00:51:51,888 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:52,975 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:53,002 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Product: VILVA Portable Monitor\nPrice: $79.99\nRating: 4.7 (57,430 ratings)\nFeatures: 15.6\" screen, FHD 1080p, USB-C and HDMI connectivity, durable smart cover.")
+
+2025-10-17 00:51:55,433 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-17 00:51:55,436 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.
