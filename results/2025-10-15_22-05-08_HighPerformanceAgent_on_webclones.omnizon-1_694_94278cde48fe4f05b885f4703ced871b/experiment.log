@@ -1,0 +1,22 @@
+2025-10-15 22:05:08,667 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-1_694 in:
+  results/2025-10-15_22-05-08_HighPerformanceAgent_on_webclones.omnizon-1_694_94278cde48fe4f05b885f4703ced871b
+2025-10-15 22:05:08,688 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 22:05:08,689 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 22:05:14,006 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.omnizon-1.
+AttributeError:
+module 'agent_src.prompts' has no attribute 'ACTION_SPACE_PROMPT'
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/main.py", line 22, in get_action
+    action = next(self.action_generator)
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/orchestrator.py", line 101, in execute
+    plan_response = self.agent.generate_plan(obs, action_desc)
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/agent.py", line 16, in generate_plan
+    {"type": "text", "text": prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'agent_src.prompts' has no attribute 'ACTION_SPACE_PROMPT'
+

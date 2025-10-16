@@ -1,0 +1,9 @@
+2025-10-15 23:52:49,121 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-10_304 in:
+  results/2025-10-15_23-52-49_HighPerformanceAgent_on_webclones.omnizon-10_304_9db1fb2a38da445e93e7f1ef3b3be0aa
+2025-10-15 23:52:49,131 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 23:52:49,131 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 23:52:59,732 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 23:53:05,054 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 23:53:05,097 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+report_infeasible('Agent generated an invalid plan.')
+

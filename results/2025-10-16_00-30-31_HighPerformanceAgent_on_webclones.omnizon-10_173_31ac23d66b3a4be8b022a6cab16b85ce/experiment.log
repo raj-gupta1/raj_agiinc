@@ -1,0 +1,166 @@
+2025-10-16 00:30:31,281 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-10_173 in:
+  results/2025-10-16_00-30-31_HighPerformanceAgent_on_webclones.omnizon-10_173_31ac23d66b3a4be8b022a6cab16b85ce
+2025-10-16 00:30:31,291 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 00:30:31,291 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 00:30:37,353 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:30:40,226 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:30:40,267 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('270')
+
+2025-10-16 00:30:41,902 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:30:46,151 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:30:46,179 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('656')
+
+2025-10-16 00:30:47,809 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:30:54,856 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:30:54,879 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('155')
+
+2025-10-16 00:30:56,506 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:31:02,432 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:31:02,461 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+select_option('155', 'maximum quantity')
+
+2025-10-16 00:31:03,978 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: TimeoutError: Locator.select_option: Timeout 500ms exceeded.
+Call log:
+  - waiting for get_by_test_id("155")
+    - locator resolved to <select bid="155" value="All" id=":R6ekqfkq:" aria-invalid="false" browsergym_set_of_marks="1" browsergym_visibility_ratio="1" class="MuiNativeSelect-select MuiNativeSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1ub306l">…</select>
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    - waiting for element to be visible and enabled
+    - did not find some options
+  - retrying select option action
+    - waiting 500ms
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 373, in select_option
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 17531, in select_option
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.select_option(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        )
+        ^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 579, in select_option
+    return await self._frame.select_option(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 763, in select_option
+    return await self._channel.send("selectOption", self._timeout, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.select_option: Timeout 500ms exceeded.
+Call log:
+  - waiting for get_by_test_id("155")
+    - locator resolved to <select bid="155" value="All" id=":R6ekqfkq:" aria-invalid="false" browsergym_set_of_marks="1" browsergym_visibility_ratio="1" class="MuiNativeSelect-select MuiNativeSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1ub306l">…</select>
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    - waiting for element to be visible and enabled
+    - did not find some options
+  - retrying select option action
+    - waiting 500ms
+
+2025-10-16 00:31:04,072 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:31:09,294 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:31:09,325 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 100)
+
+2025-10-16 00:31:10,939 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:31:14,823 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:31:14,851 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('155')
+
+2025-10-16 00:31:16,469 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:31:17,281 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 00:31:17,282 - openai._base_client - INFO - Retrying request to /chat/completions in 1.961000 seconds
+2025-10-16 00:31:26,906 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:31:26,934 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 100)
+
+2025-10-16 00:31:28,541 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 00:31:29,262 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 00:31:29,263 - openai._base_client - INFO - Retrying request to /chat/completions in 1.964000 seconds
+2025-10-16 00:31:31,924 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 00:31:31,925 - openai._base_client - INFO - Retrying request to /chat/completions in 1.964000 seconds
+2025-10-16 00:31:34,586 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 00:31:34,596 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.omnizon-10.
+RateLimitError:
+Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4o-mini in organization org-R9mtzFqmOFC3GL1m4fbsuTJF on tokens per min (TPM): Limit 200000, Used 200000, Requested 6549. Please try again in 1.964s. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/main.py", line 24, in get_action
+    action = self.action_generator.send(obs)
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/orchestrator.py", line 182, in execute
+    model_response = self.agent.execute_step(obs, plan, current_plan_step, self.memory, action_desc,
+                                             bool(error_for_prompt))
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/agent.py", line 54, in execute_step
+    response = self.client.chat.completions.create(
+        model=self.config.model_name,
+        messages=[{"role": "system", "content": system_msgs}, {"role": "user", "content": user_msgs}]
+    )
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4o-mini in organization org-R9mtzFqmOFC3GL1m4fbsuTJF on tokens per min (TPM): Limit 200000, Used 200000, Requested 6549. Please try again in 1.964s. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+

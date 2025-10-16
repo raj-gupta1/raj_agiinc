@@ -1,0 +1,21 @@
+2025-10-16 01:08:45,332 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-4_984 in:
+  results/2025-10-16_01-08-45_HighPerformanceAgent_on_webclones.omnizon-4_984_8a71c71a2e0a4519b8422677a9219716
+2025-10-16 01:08:45,342 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 01:08:45,342 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 01:08:53,455 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:56,629 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:09:00,211 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:09:01,243 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:09:01,287 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'Marshall Emberton II Portable Bluetooth Speaker')
+
+2025-10-16 01:09:07,072 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:09:07,379 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:09:07,380 - openai._base_client - INFO - Retrying request to /chat/completions in 0.040000 seconds
+2025-10-16 01:09:08,608 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:09:08,609 - openai._base_client - INFO - Retrying request to /chat/completions in 0.040000 seconds
+2025-10-16 01:09:09,015 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:09:09,058 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Error: Parser API failed.")
+
+2025-10-16 01:09:10,680 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

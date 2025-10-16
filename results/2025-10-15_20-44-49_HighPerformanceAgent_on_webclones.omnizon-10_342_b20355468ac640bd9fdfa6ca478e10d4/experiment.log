@@ -1,0 +1,266 @@
+2025-10-15 20:44:49,961 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-10_342 in:
+  results/2025-10-15_20-44-49_HighPerformanceAgent_on_webclones.omnizon-10_342_b20355468ac640bd9fdfa6ca478e10d4
+2025-10-15 20:44:49,980 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:44:49,981 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:44:58,528 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:00,575 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:05,285 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:06,105 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:06,145 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'product')
+
+2025-10-15 20:45:15,361 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:16,141 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:16,184 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('265')
+
+2025-10-15 20:45:17,791 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:45:24,907 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:25,663 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:25,688 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('656')
+
+2025-10-15 20:45:27,316 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:45:34,570 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:35,391 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:35,413 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('123', 'maximum')
+
+2025-10-15 20:45:36,926 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: TimeoutError: Locator.fill: Timeout 500ms exceeded.
+Call log:
+  - waiting for get_by_test_id("123")
+    - locator resolved to <style data-s="" bid="123" data-emotion="css sa2ej5" browsergym_set_of_marks="0" browsergym_visibility_ratio="0">.css-sa2ej5{background-color:#232F3E;}</style>
+    - fill("maximum")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+      - waiting 100ms
+    - waiting for element to be visible, enabled and editable
+    - element is not visible
+  - retrying fill action
+    - waiting 500ms
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 352, in fill
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15889, in fill
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.fill(
+        ^^^^^^^^^^^^^^^^^^^^
+            value=value, timeout=timeout, noWaitAfter=no_wait_after, force=force
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 212, in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 590, in fill
+    await self._fill(**locals_to_params(locals()))
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 602, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.fill: Timeout 500ms exceeded.
+Call log:
+  - waiting for get_by_test_id("123")
+    - locator resolved to <style data-s="" bid="123" data-emotion="css sa2ej5" browsergym_set_of_marks="0" browsergym_visibility_ratio="0">.css-sa2ej5{background-color:#232F3E;}</style>
+    - fill("maximum")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+      - waiting 100ms
+    - waiting for element to be visible, enabled and editable
+    - element is not visible
+  - retrying fill action
+    - waiting 500ms
+
+2025-10-15 20:45:37,015 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:45:53,107 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:54,130 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:54,157 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('some_bid_for_quantity_button')
+
+2025-10-15 20:45:54,165 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Could not find element with bid "some_bid_for_quantity_button"
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 390, in click
+  File "<string>", line 115, in get_elem_by_bid
+ValueError: Could not find element with bid "some_bid_for_quantity_button"
+2025-10-15 20:45:54,241 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:45:57,815 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:58,636 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:45:58,661 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('some_bid_for_quantity_button')
+
+2025-10-15 20:45:58,668 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Could not find element with bid "some_bid_for_quantity_button"
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 390, in click
+  File "<string>", line 115, in get_elem_by_bid
+ValueError: Could not find element with bid "some_bid_for_quantity_button"
+2025-10-15 20:45:58,743 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:46:09,591 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:10,514 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:10,536 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('leading_quantity_selection_button_bid')
+
+2025-10-15 20:46:10,542 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Could not find element with bid "leading_quantity_selection_button_bid"
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 390, in click
+  File "<string>", line 115, in get_elem_by_bid
+ValueError: Could not find element with bid "leading_quantity_selection_button_bid"
+2025-10-15 20:46:10,613 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:46:15,837 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:18,297 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:18,325 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('leading_quantity_selection_button_bid')
+
+2025-10-15 20:46:18,332 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Could not find element with bid "leading_quantity_selection_button_bid"
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 390, in click
+  File "<string>", line 115, in get_elem_by_bid
+ValueError: Could not find element with bid "leading_quantity_selection_button_bid"
+2025-10-15 20:46:18,406 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:46:23,496 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:23,927 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:23,928 - openai._base_client - INFO - Retrying request to /chat/completions in 0.050000 seconds
+2025-10-15 20:46:24,542 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:24,543 - openai._base_client - INFO - Retrying request to /chat/completions in 0.050000 seconds
+2025-10-15 20:46:25,770 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:25,792 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll('0', '200')
+
+2025-10-15 20:46:25,799 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: Error: Mouse.wheel: delta_x: expected float, got string
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 326, in scroll
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 1592, in wheel
+    self._sync(self._impl_obj.wheel(deltaX=delta_x, deltaY=delta_y))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_input.py", line 101, in wheel
+    await self._channel.send("mouseWheel", None, locals_to_params(locals()))
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Mouse.wheel: delta_x: expected float, got string
+2025-10-15 20:46:25,871 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:46:30,276 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:30,686 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:30,686 - openai._base_client - INFO - Retrying request to /chat/completions in 0.057000 seconds
+2025-10-15 20:46:31,198 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:31,199 - openai._base_client - INFO - Retrying request to /chat/completions in 0.057000 seconds
+2025-10-15 20:46:31,607 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:31,633 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Error: Parser API failed.")
+
+2025-10-15 20:46:33,280 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.
+2025-10-15 20:46:33,351 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'

@@ -1,0 +1,62 @@
+{
+    "task_name": "webclones.omnizon-1",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-1_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "27178e96-575b-42aa-b4ac-925158715eae",
+    "n_steps": 3,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-1_549",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 4,
+    "stats.cum_n_token_goal": 57,
+    "stats.max_n_token_goal": 19,
+    "stats.cum_n_token_task_id": 15,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 40,
+    "stats.max_n_token_url": 16,
+    "stats.cum_n_token_focused_element_bid": 3,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 12,
+    "stats.max_n_token_last_action": 8,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_dom_txt": 175366,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 17027,
+    "stats.max_n_token_axtree_txt": 6961,
+    "stats.cum_n_token_pruned_html": 109385,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 8.013744115829468,
+    "stats.max_step_elapsed": 4.544075012207031,
+    "stats.cum_agent_elapsed": 27.504746913909912,
+    "stats.max_agent_elapsed": 14.45627498626709,
+    "terminated": true,
+    "truncated": false
+}

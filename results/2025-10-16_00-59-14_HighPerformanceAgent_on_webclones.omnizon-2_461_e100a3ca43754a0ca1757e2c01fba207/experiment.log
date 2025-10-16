@@ -1,0 +1,11 @@
+2025-10-16 00:59:14,037 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-2_461 in:
+  results/2025-10-16_00-59-14_HighPerformanceAgent_on_webclones.omnizon-2_461_e100a3ca43754a0ca1757e2c01fba207
+2025-10-16 00:59:14,048 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 00:59:14,048 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 00:59:22,838 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:59:30,901 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:59:32,156 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:59:32,198 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user('Parse Error')
+
+2025-10-16 00:59:33,837 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

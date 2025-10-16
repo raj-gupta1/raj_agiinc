@@ -1,0 +1,24 @@
+2025-10-15 20:46:33,492 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-2_877 in:
+  results/2025-10-15_20-46-33_HighPerformanceAgent_on_webclones.omnizon-2_877_3e5919726ed647f88688a7d7d4a7ea9e
+2025-10-15 20:46:33,511 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:46:33,511 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:46:38,644 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:38,645 - openai._base_client - INFO - Retrying request to /chat/completions in 0.791000 seconds
+2025-10-15 20:46:43,895 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:44,305 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:44,306 - openai._base_client - INFO - Retrying request to /chat/completions in 0.045000 seconds
+2025-10-15 20:46:48,299 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:46:49,118 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:49,118 - openai._base_client - INFO - Retrying request to /chat/completions in 1.974000 seconds
+2025-10-15 20:46:52,599 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:46:52,600 - openai._base_client - INFO - Retrying request to /chat/completions in 0.442000 seconds
+2025-10-15 20:46:59,972 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:47:00,996 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:00,997 - openai._base_client - INFO - Retrying request to /chat/completions in 0.031000 seconds
+2025-10-15 20:47:01,406 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:01,407 - openai._base_client - INFO - Retrying request to /chat/completions in 0.031000 seconds
+2025-10-15 20:47:01,815 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:01,849 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Error: Parser API failed.")
+
+2025-10-15 20:47:03,492 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

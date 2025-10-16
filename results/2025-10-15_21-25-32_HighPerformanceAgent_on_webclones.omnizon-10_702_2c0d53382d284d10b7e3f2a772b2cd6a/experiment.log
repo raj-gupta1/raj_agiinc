@@ -1,0 +1,21 @@
+2025-10-15 21:25:32,657 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-10_702 in:
+  results/2025-10-15_21-25-32_HighPerformanceAgent_on_webclones.omnizon-10_702_2c0d53382d284d10b7e3f2a772b2cd6a
+2025-10-15 21:25:32,668 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 21:25:32,669 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 21:25:39,314 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 21:25:39,317 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.omnizon-10.
+AttributeError:
+'TaskOrchestrator' object has no attribute '_parse_plan_with_llm'
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/main.py", line 22, in get_action
+    action = next(self.action_generator)
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/orchestrator.py", line 45, in execute
+    plan = self._parse_plan_with_llm(plan_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TaskOrchestrator' object has no attribute '_parse_plan_with_llm'. Did you mean: '_parse_action_with_llm'?
+

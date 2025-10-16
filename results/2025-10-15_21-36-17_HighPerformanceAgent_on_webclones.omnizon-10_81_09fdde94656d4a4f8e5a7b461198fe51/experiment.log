@@ -1,0 +1,11 @@
+2025-10-15 21:36:17,378 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-10_81 in:
+  results/2025-10-15_21-36-17_HighPerformanceAgent_on_webclones.omnizon-10_81_09fdde94656d4a4f8e5a7b461198fe51
+2025-10-15 21:36:17,388 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 21:36:17,388 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 21:36:26,268 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 21:36:28,518 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 21:36:39,988 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 21:36:41,421 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 21:36:41,462 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+report_infeasible("No 'Buy Now' buttons are visible on the current screen.")
+

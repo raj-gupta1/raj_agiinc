@@ -1,0 +1,35 @@
+2025-10-16 00:46:02,909 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-1_492 in:
+  results/2025-10-16_00-46-02_HighPerformanceAgent_on_webclones.omnizon-1_492_ecea45abd5fa4cde9006b865e25fdd18
+2025-10-16 00:46:02,930 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 00:46:02,930 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 00:46:11,120 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:18,493 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:19,617 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:19,714 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:46:29,447 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:30,267 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:30,305 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:46:40,607 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:42,042 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:42,085 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:46:50,540 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:51,428 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:51,469 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:46:57,401 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:58,225 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:46:58,266 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:47:00,026 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Task completed.")
+
+2025-10-16 00:47:02,843 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:47:02,845 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

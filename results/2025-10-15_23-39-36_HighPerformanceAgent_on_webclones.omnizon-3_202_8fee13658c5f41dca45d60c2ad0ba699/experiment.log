@@ -1,0 +1,64 @@
+2025-10-15 23:39:36,760 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-3_202 in:
+  results/2025-10-15_23-39-36_HighPerformanceAgent_on_webclones.omnizon-3_202_8fee13658c5f41dca45d60c2ad0ba699
+2025-10-15 23:39:36,771 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 23:39:36,771 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 23:39:43,039 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 23:39:43,371 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 23:39:43,371 - openai._base_client - INFO - Retrying request to /chat/completions in 0.019000 seconds
+2025-10-15 23:39:44,807 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 23:39:46,240 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 23:39:46,240 - openai._base_client - INFO - Retrying request to /chat/completions in 2.319000 seconds
+2025-10-15 23:39:49,311 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 23:39:49,312 - openai._base_client - INFO - Retrying request to /chat/completions in 2.319000 seconds
+2025-10-15 23:39:54,923 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 23:39:54,967 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 500)
+
+2025-10-15 23:40:09,383 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 23:40:09,426 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('455')
+
+2025-10-15 23:40:11,044 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 23:40:11,817 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 23:40:11,818 - openai._base_client - INFO - Retrying request to /chat/completions in 2.088000 seconds
+2025-10-15 23:40:14,605 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 23:40:14,607 - openai._base_client - INFO - Retrying request to /chat/completions in 2.088000 seconds
+2025-10-15 23:40:17,408 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 23:40:17,412 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.omnizon-3.
+RateLimitError:
+Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4o-mini in organization org-R9mtzFqmOFC3GL1m4fbsuTJF on tokens per min (TPM): Limit 200000, Used 200000, Requested 6962. Please try again in 2.088s. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/main.py", line 24, in get_action
+    action = self.action_generator.send(obs)
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/orchestrator.py", line 192, in execute
+    model_response = self.agent.execute_step(obs, plan, current_plan_step, self.memory, action_desc,
+                                             bool(error_for_prompt))
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/agent.py", line 54, in execute_step
+    response = self.client.chat.completions.create(
+        model=self.config.model_name,
+        messages=[{"role": "system", "content": system_msgs}, {"role": "user", "content": user_msgs}]
+    )
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4o-mini in organization org-R9mtzFqmOFC3GL1m4fbsuTJF on tokens per min (TPM): Limit 200000, Used 200000, Requested 6962. Please try again in 2.088s. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+

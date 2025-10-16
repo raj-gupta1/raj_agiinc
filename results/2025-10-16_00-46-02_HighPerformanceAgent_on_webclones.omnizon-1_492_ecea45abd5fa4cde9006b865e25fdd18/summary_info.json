@@ -1,0 +1,62 @@
+{
+    "task_name": "webclones.omnizon-1",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-1_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "7d05eb55-7407-4934-9819-82750d699f84",
+    "n_steps": 6,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-1_492",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 7,
+    "stats.cum_n_token_goal": 114,
+    "stats.max_n_token_goal": 19,
+    "stats.cum_n_token_task_id": 30,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 72,
+    "stats.max_n_token_url": 12,
+    "stats.cum_n_token_focused_element_bid": 6,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 35,
+    "stats.max_n_token_last_action": 7,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_dom_txt": 423910,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 40566,
+    "stats.max_n_token_axtree_txt": 6961,
+    "stats.cum_n_token_pruned_html": 291968,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 12.799949169158936,
+    "stats.max_step_elapsed": 4.163393020629883,
+    "stats.cum_agent_elapsed": 43.907241344451904,
+    "stats.max_agent_elapsed": 12.507110834121704,
+    "terminated": true,
+    "truncated": false
+}

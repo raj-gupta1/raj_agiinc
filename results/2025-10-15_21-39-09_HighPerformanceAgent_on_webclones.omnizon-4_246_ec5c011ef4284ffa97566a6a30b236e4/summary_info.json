@@ -1,0 +1,68 @@
+{
+    "task_name": "webclones.omnizon-4",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-4_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "37152fd6-2781-4d19-b60e-eab4c1c4c662",
+    "n_steps": 7,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-4_246",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {
+                    "0": {
+                        "id": "15",
+                        "name": "Marshall Emberton II Portable Bluetooth Speaker, Black & Brass",
+                        "quantity": 1
+                    }
+                },
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 8,
+    "stats.cum_n_token_goal": 357,
+    "stats.max_n_token_goal": 51,
+    "stats.cum_n_token_task_id": 35,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 150,
+    "stats.max_n_token_url": 34,
+    "stats.cum_n_token_focused_element_bid": 7,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 34,
+    "stats.max_n_token_last_action": 14,
+    "stats.cum_n_token_last_action_error": 30,
+    "stats.max_n_token_last_action_error": 10,
+    "stats.cum_n_token_dom_txt": 377751,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 34401,
+    "stats.max_n_token_axtree_txt": 6961,
+    "stats.cum_n_token_pruned_html": 223812,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 9.640275239944458,
+    "stats.max_step_elapsed": 4.055926084518433,
+    "stats.cum_agent_elapsed": 68.638014793396,
+    "stats.max_agent_elapsed": 21.068132162094116,
+    "terminated": true,
+    "truncated": false
+}

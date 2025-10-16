@@ -1,0 +1,62 @@
+{
+    "task_name": "webclones.omnizon-5",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-5_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "27178e96-575b-42aa-b4ac-925158715eae",
+    "n_steps": 13,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-5_164",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 14,
+    "stats.cum_n_token_goal": 403,
+    "stats.max_n_token_goal": 31,
+    "stats.cum_n_token_task_id": 65,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 160,
+    "stats.max_n_token_url": 15,
+    "stats.cum_n_token_focused_element_bid": 13,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 193,
+    "stats.max_n_token_last_action": 20,
+    "stats.cum_n_token_last_action_error": 72,
+    "stats.max_n_token_last_action_error": 8,
+    "stats.cum_n_token_dom_txt": 977059,
+    "stats.max_n_token_dom_txt": 161573,
+    "stats.cum_n_token_axtree_txt": 127579,
+    "stats.max_n_token_axtree_txt": 48806,
+    "stats.cum_n_token_pruned_html": 691129,
+    "stats.max_n_token_pruned_html": 139582,
+    "stats.cum_step_elapsed": 11.034587383270264,
+    "stats.max_step_elapsed": 4.028566837310791,
+    "stats.cum_agent_elapsed": 162.11448764801025,
+    "stats.max_agent_elapsed": 32.83823585510254,
+    "terminated": true,
+    "truncated": false
+}

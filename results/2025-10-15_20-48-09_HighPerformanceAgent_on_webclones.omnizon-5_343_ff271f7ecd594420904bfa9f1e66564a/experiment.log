@@ -1,0 +1,8 @@
+2025-10-15 20:48:09,893 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-5_343 in:
+  results/2025-10-15_20-48-09_HighPerformanceAgent_on_webclones.omnizon-5_343_ff271f7ecd594420904bfa9f1e66564a
+2025-10-15 20:48:09,914 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:48:09,915 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:48:18,516 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:48:21,178 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:48:22,043 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:48:22,044 - openai._base_client - INFO - Retrying request to /chat/completions in 1.959000 seconds

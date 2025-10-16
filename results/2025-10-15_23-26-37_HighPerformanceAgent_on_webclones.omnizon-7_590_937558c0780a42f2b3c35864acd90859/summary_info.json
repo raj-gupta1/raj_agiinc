@@ -1,0 +1,62 @@
+{
+    "task_name": "webclones.omnizon-7",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-7_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "ae4be3b7-71ff-4147-bf2a-daa8150d993c",
+    "n_steps": 2,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-7_590",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 3,
+    "stats.cum_n_token_goal": 36,
+    "stats.max_n_token_goal": 18,
+    "stats.cum_n_token_task_id": 10,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 28,
+    "stats.max_n_token_url": 16,
+    "stats.cum_n_token_focused_element_bid": 2,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 4,
+    "stats.max_n_token_last_action": 4,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_dom_txt": 120598,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 15817,
+    "stats.max_n_token_axtree_txt": 8856,
+    "stats.cum_n_token_pruned_html": 76605,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 6.575989007949829,
+    "stats.max_step_elapsed": 4.859451055526733,
+    "stats.cum_agent_elapsed": 22.27563786506653,
+    "stats.max_agent_elapsed": 12.760910034179688,
+    "terminated": true,
+    "truncated": false
+}

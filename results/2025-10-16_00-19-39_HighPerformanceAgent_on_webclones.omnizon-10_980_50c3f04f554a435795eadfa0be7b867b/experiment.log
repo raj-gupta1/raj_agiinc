@@ -1,0 +1,45 @@
+2025-10-16 00:19:39,262 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-10_980 in:
+  results/2025-10-16_00-19-39_HighPerformanceAgent_on_webclones.omnizon-10_980_50c3f04f554a435795eadfa0be7b867b
+2025-10-16 00:19:39,272 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 00:19:39,272 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 00:19:45,567 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:19:48,960 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:19:49,003 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:19:55,498 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:19:55,539 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('buy_now_button')
+
+2025-10-16 00:19:55,546 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Could not find element with bid "buy_now_button"
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 390, in click
+  File "<string>", line 115, in get_elem_by_bid
+ValueError: Could not find element with bid "buy_now_button"
+2025-10-16 00:20:13,740 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:20:13,779 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:20:27,820 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:20:27,862 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll(0, 300)
+
+2025-10-16 00:20:38,608 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 00:20:38,652 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user('Parse Error')
+
+2025-10-16 00:20:40,277 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

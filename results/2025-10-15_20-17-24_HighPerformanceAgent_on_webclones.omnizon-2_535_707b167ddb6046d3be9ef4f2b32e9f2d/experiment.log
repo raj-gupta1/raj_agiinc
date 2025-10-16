@@ -1,0 +1,30 @@
+2025-10-15 20:17:24,335 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-2_535 in:
+  results/2025-10-15_20-17-24_HighPerformanceAgent_on_webclones.omnizon-2_535_707b167ddb6046d3be9ef4f2b32e9f2d
+2025-10-15 20:17:24,345 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:17:24,346 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:17:31,826 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:17:47,594 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:17:47,638 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+set_value_to_element(163, 'smartphones') 
+click_element(167)
+
+2025-10-15 20:17:47,640 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: NameError: Invalid action type 'set_value_to_element'.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 339, in to_python_code
+    raise NameError(f"Invalid action type '{function_name}'.")
+NameError: Invalid action type 'set_value_to_element'.
+2025-10-15 20:18:06,435 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:18:06,478 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+markdown
+set_value_to_element(163, 'smartphones')
+click_element(167)
+
+2025-10-15 20:18:06,480 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: NameError: Invalid action type 'set_value_to_element'.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 339, in to_python_code
+    raise NameError(f"Invalid action type '{function_name}'.")
+NameError: Invalid action type 'set_value_to_element'.

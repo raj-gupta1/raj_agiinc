@@ -1,0 +1,50 @@
+2025-10-16 01:19:25,286 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-2_594 in:
+  results/2025-10-16_01-19-25_HighPerformanceAgent_on_webclones.omnizon-2_594_8025aef96e1743599d22fc756ff326ce
+2025-10-16 01:19:25,296 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 01:19:25,296 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 01:19:36,847 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:19:45,345 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:19:51,030 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:19:51,942 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:19:51,991 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'smartphones')
+
+2025-10-16 01:19:56,419 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:19:57,325 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:19:57,361 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-16 01:19:58,983 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 01:20:06,028 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:20:06,950 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:20:06,975 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('657')
+
+2025-10-16 01:20:08,604 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 01:20:15,628 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:20:16,371 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:20:26,732 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('707')
+
+2025-10-16 01:20:28,343 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 01:20:37,057 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:20:54,157 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:20:54,182 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('712')
+
+2025-10-16 01:21:05,628 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:21:06,343 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:21:09,829 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('932')
+
+2025-10-16 01:21:19,868 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:21:21,200 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:21:21,348 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('1132')
+
+2025-10-16 01:21:29,907 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:21:31,127 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:21:31,148 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Order placed, thanks! Confirmation will be sent to your email.")
+
+2025-10-16 01:21:32,786 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

@@ -1,0 +1,60 @@
+2025-10-15 20:04:23,530 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-1_598 in:
+  results/2025-10-15_20-04-23_HighPerformanceAgent_on_webclones.omnizon-1_598_75b34f257eda4d0abe6142d030c06173
+2025-10-15 20:04:23,567 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:04:23,567 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:04:34,048 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:36,914 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:37,748 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:37,850 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+focus('163')
+
+2025-10-15 20:04:43,161 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:43,878 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:43,917 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'laptop')
+
+2025-10-15 20:04:49,612 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:51,558 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:51,602 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-15 20:04:53,238 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:04:57,030 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:57,701 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:04:57,725 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-15 20:04:59,344 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-15 20:05:02,208 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:02,914 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:02,938 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('634')
+
+2025-10-15 20:05:07,633 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:08,863 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:08,888 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('756')
+
+2025-10-15 20:05:13,880 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:14,598 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:14,623 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+get('756')
+
+2025-10-15 20:05:14,625 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: NameError: Invalid action type 'get'.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 339, in to_python_code
+    raise NameError(f"Invalid action type '{function_name}'.")
+NameError: Invalid action type 'get'.
+2025-10-15 20:05:20,229 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:21,662 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:05:21,663 - openai._base_client - INFO - Retrying request to /chat/completions in 0.051000 seconds
+2025-10-15 20:05:22,024 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:05:22,024 - openai._base_client - INFO - Retrying request to /chat/completions in 0.051000 seconds
+2025-10-15 20:05:22,481 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:05:22,507 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Error: The parser failed to execute.")
+
+2025-10-15 20:05:25,456 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:05:25,459 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

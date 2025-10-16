@@ -1,0 +1,98 @@
+{
+    "task_name": "webclones.omnizon-2",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-2_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "37152fd6-2781-4d19-b60e-eab4c1c4c662",
+    "n_steps": 8,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-2_422",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {
+                    "0": {
+                        "order": {
+                            "cart": [
+                                {
+                                    "id": "21",
+                                    "name": "Google Pixel 9 - Unlocked Android Smartphone with Gemini, 24-Hour Battery, Advanced Camera, and 6.3\" Actua Display - Porcelain - 128 GB",
+                                    "quantity": 1
+                                },
+                                {
+                                    "id": "22",
+                                    "name": "SAMSUNG Galaxy S24 Ultra Cell Phone, 512GB AI Smartphone, Unlocked Android, 50MP Zoom Camera, Long Battery Life, S Pen, US Version, 2024, Titanium Gray",
+                                    "quantity": 1
+                                },
+                                {
+                                    "id": "23",
+                                    "name": "Xiaomi Redmi Note 13 PRO 5G + 4G LTE (256GB + 8GB) 6.67\" 200MP Triple (Tmobile Mint Tello & Global) Global Bands Unlocked + (Fast Car Dual Charger Bundle) (Aurora Purple (Global ROM))",
+                                    "quantity": 1
+                                }
+                            ],
+                            "total": "2503.96",
+                            "selected_delivery": "Tomorrow, Jul 19",
+                            "selected_card": null,
+                            "config": {
+                                "omnizon": {
+                                    "latency": 0,
+                                    "hide_aria_labels": false,
+                                    "apply_discount": false,
+                                    "discount_percentage": 20,
+                                    "run_id": "0",
+                                    "task_id": "omnizon-2",
+                                    "removePopup": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 9,
+    "stats.cum_n_token_goal": 320,
+    "stats.max_n_token_goal": 40,
+    "stats.cum_n_token_task_id": 40,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 114,
+    "stats.max_n_token_url": 17,
+    "stats.cum_n_token_focused_element_bid": 7,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 33,
+    "stats.max_n_token_last_action": 8,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_dom_txt": 352780,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 38406,
+    "stats.max_n_token_axtree_txt": 6961,
+    "stats.cum_n_token_pruned_html": 177350,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 15.923573970794678,
+    "stats.max_step_elapsed": 3.993833065032959,
+    "stats.cum_agent_elapsed": 91.36714792251587,
+    "stats.max_agent_elapsed": 19.472580909729004,
+    "terminated": true,
+    "truncated": false
+}

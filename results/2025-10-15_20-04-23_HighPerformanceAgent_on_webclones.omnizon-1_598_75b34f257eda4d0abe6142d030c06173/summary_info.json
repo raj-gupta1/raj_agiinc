@@ -1,0 +1,62 @@
+{
+    "task_name": "webclones.omnizon-1",
+    "agent_type": "HighPerformanceAgent",
+    "model_name": "unknown",
+    "max_steps": 25,
+    "leaderboard": false,
+    "cache_key": "webclones.omnizon-1_HighPerformanceAgent_unknown_25",
+    "experiment_status": "completed",
+    "run_uuid": "d06a8480-b016-4566-bdd0-a431482117d1",
+    "n_steps": 8,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-1_598",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 9,
+    "stats.cum_n_token_goal": 152,
+    "stats.max_n_token_goal": 19,
+    "stats.cum_n_token_task_id": 40,
+    "stats.max_n_token_task_id": 5,
+    "stats.cum_n_token_url": 107,
+    "stats.max_n_token_url": 16,
+    "stats.cum_n_token_focused_element_bid": 8,
+    "stats.max_n_token_focused_element_bid": 1,
+    "stats.cum_n_token_last_action": 32,
+    "stats.max_n_token_last_action": 8,
+    "stats.cum_n_token_last_action_error": 9,
+    "stats.max_n_token_last_action_error": 9,
+    "stats.cum_n_token_dom_txt": 398270,
+    "stats.max_n_token_dom_txt": 71130,
+    "stats.cum_n_token_axtree_txt": 41388,
+    "stats.max_n_token_axtree_txt": 6961,
+    "stats.cum_n_token_pruned_html": 222160,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 14.978124141693115,
+    "stats.max_step_elapsed": 4.513896226882935,
+    "stats.cum_agent_elapsed": 43.54284358024597,
+    "stats.max_agent_elapsed": 9.649172067642212,
+    "terminated": true,
+    "truncated": false
+}

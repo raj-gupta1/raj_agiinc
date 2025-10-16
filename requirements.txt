@@ -1,0 +1,15 @@
+playwright~=1.55.0
+pyparsing~=3.2.5
+gymnasium~=1.2.1
+numpy~=2.3.3
+pillow~=11.3.0
+agisdk~=0.2.9
+beautifulsoup4~=4.14.2
+requests~=2.32.5
+openai~=1.109.1
+jmespath~=1.0.1
+tqdm~=4.67.1
+tiktoken~=0.12.0
+ray~=2.50.0
+rich~=14.2.0
+python-dotenv~=1.1.1

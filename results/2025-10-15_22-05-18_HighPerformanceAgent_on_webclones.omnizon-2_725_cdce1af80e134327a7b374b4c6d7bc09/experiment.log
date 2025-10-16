@@ -1,0 +1,5 @@
+2025-10-15 22:05:18,266 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-2_725 in:
+  results/2025-10-15_22-05-18_HighPerformanceAgent_on_webclones.omnizon-2_725_cdce1af80e134327a7b374b4c6d7bc09
+2025-10-15 22:05:18,275 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 22:05:18,276 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 22:05:20,659 - agisdk.REAL.browsergym.experiments.loop - ERROR - Error while saving step info in the finally block: 'NoneType' object has no attribute 'pop'

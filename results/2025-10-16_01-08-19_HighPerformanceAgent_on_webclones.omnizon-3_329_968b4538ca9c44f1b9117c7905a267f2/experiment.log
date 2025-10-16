@@ -1,0 +1,20 @@
+2025-10-16 01:08:19,476 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-3_329 in:
+  results/2025-10-16_01-08-19_HighPerformanceAgent_on_webclones.omnizon-3_329_968b4538ca9c44f1b9117c7905a267f2
+2025-10-16 01:08:19,487 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 01:08:19,487 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 01:08:26,421 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:29,697 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:34,406 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:35,429 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:35,473 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('455')
+
+2025-10-16 01:08:37,103 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 01:08:40,447 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:41,985 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:42,014 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Product Listings Found: Sony WH-1000XM5, JBL Tune 510BT, Beats Studio Pro, Apple AirPods Pro 2, HyperX Cloud III")
+
+2025-10-16 01:08:45,057 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:08:45,060 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.
+2025-10-16 01:08:45,198 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'

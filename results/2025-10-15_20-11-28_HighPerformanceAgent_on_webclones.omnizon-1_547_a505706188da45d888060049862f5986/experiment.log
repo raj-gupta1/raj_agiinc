@@ -1,0 +1,27 @@
+2025-10-15 20:11:28,717 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-1_547 in:
+  results/2025-10-15_20-11-28_HighPerformanceAgent_on_webclones.omnizon-1_547_a505706188da45d888060049862f5986
+2025-10-15 20:11:28,737 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:11:28,737 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:11:40,544 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:11:40,646 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+set_text_input_text('167', 'laptop')
+click('171')
+
+2025-10-15 20:11:40,649 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: NameError: Invalid action type 'set_text_input_text'.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 339, in to_python_code
+    raise NameError(f"Invalid action type '{function_name}'.")
+NameError: Invalid action type 'set_text_input_text'.
+2025-10-15 20:11:45,969 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:11:46,013 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+set_text_input_text('167', 'laptop')
+
+2025-10-15 20:11:46,015 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: NameError: Invalid action type 'set_text_input_text'.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 339, in to_python_code
+    raise NameError(f"Invalid action type '{function_name}'.")
+NameError: Invalid action type 'set_text_input_text'.

@@ -1,0 +1,150 @@
+2025-10-16 01:22:17,827 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-5_164 in:
+  results/2025-10-16_01-22-17_HighPerformanceAgent_on_webclones.omnizon-5_164_f25a9b8e33644d64babd48dd8fd566ef
+2025-10-16 01:22:17,838 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-16 01:22:17,838 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-16 01:22:24,598 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:27,361 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:31,038 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:31,968 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:32,014 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:22:32,017 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:22:37,395 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:38,318 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:38,354 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:22:38,357 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:22:52,077 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:53,064 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:22:53,106 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:22:53,108 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:22:59,330 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:00,232 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:00,274 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:23:00,276 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:23:10,983 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:12,008 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:12,048 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:23:12,051 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:23:25,487 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:27,332 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:27,378 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:23:27,380 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:23:31,976 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:33,003 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:33,347 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:23:33,350 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:23:37,915 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:39,655 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:39,693 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:23:39,695 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:23:40,577 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:23:40,578 - openai._base_client - INFO - Retrying request to /chat/completions in 2.253000 seconds
+2025-10-16 01:23:43,547 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:23:43,548 - openai._base_client - INFO - Retrying request to /chat/completions in 0.679000 seconds
+2025-10-16 01:23:49,281 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:50,521 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:50,567 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+fill('163', 'KTC '24' inch 1500R Curved Gaming Monitor')
+
+2025-10-16 01:23:50,570 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received an empty action.
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 518, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/highlevel.py", line 327, in to_python_code
+    raise ValueError("Received an empty action.")
+ValueError: Received an empty action.
+2025-10-16 01:23:57,578 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:58,395 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:23:58,436 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+focus('163')
+
+2025-10-16 01:24:00,955 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:24:00,956 - openai._base_client - INFO - Retrying request to /chat/completions in 2.207000 seconds
+2025-10-16 01:24:03,926 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:24:03,926 - openai._base_client - INFO - Retrying request to /chat/completions in 2.207000 seconds
+2025-10-16 01:24:06,895 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:24:08,635 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:24:08,636 - openai._base_client - INFO - Retrying request to /chat/completions in 2.207000 seconds
+2025-10-16 01:24:18,568 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:24:19,183 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:24:19,224 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('167')
+
+2025-10-16 01:24:21,018 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Check each product page for other buying options. Price and other details may vary based on product size and color.'
+2025-10-16 01:24:22,562 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-16 01:24:22,563 - openai._base_client - INFO - Retrying request to /chat/completions in 13.104000 seconds
+2025-10-16 01:24:51,748 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:24:54,001 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:24:54,097 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+click('2384')
+
+2025-10-16 01:25:09,975 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:25:11,819 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:25:11,845 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+send_msg_to_user("Specifications for KTC 24 inch 1500R Curved Gaming Monitor: Size: 23.8\", Brand: KTC, Screen Size: 24 Inches, Resolution: FHD, Aspect Ratio: 16:9, Screen Surface: Matte.")
+
+2025-10-16 01:25:14,592 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-16 01:25:14,595 - agisdk.REAL.browsergym.core.env - INFO - The active page and / or page history has changed during task.validate(). A recovery fix will be applied.

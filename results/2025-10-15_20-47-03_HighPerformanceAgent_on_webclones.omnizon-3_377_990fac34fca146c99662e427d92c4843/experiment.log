@@ -1,0 +1,91 @@
+2025-10-15 20:47:03,766 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment HighPerformanceAgent_on_webclones.omnizon-3_377 in:
+  results/2025-10-15_20-47-03_HighPerformanceAgent_on_webclones.omnizon-3_377_990fac34fca146c99662e427d92c4843
+2025-10-15 20:47:03,785 - agisdk.REAL.browsergym.webclones.base - INFO - Using default run_id: 0
+2025-10-15 20:47:03,785 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-10-15 20:47:11,135 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:47:12,877 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:47:13,796 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:13,797 - openai._base_client - INFO - Retrying request to /chat/completions in 1.953000 seconds
+2025-10-15 20:47:16,765 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:16,765 - openai._base_client - INFO - Retrying request to /chat/completions in 1.953000 seconds
+2025-10-15 20:47:22,910 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:47:23,735 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-15 20:47:23,780 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+scroll('0', '500')
+
+2025-10-15 20:47:23,786 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: Error: Mouse.wheel: delta_x: expected float, got string
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/env.py", line 520, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 624, in <module>
+  File "<string>", line 326, in scroll
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 1592, in wheel
+    self._sync(self._impl_obj.wheel(deltaX=delta_x, deltaY=delta_y))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_input.py", line 101, in wheel
+    await self._channel.send("mouseWheel", None, locals_to_params(locals()))
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Mouse.wheel: delta_x: expected float, got string
+2025-10-15 20:47:24,855 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:24,856 - openai._base_client - INFO - Retrying request to /chat/completions in 1.913000 seconds
+2025-10-15 20:47:28,132 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:28,133 - openai._base_client - INFO - Retrying request to /chat/completions in 1.913000 seconds
+2025-10-15 20:47:31,204 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-10-15 20:47:31,213 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.omnizon-3.
+RateLimitError:
+Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4o-mini in organization org-R9mtzFqmOFC3GL1m4fbsuTJF on tokens per min (TPM): Limit 200000, Used 199703, Requested 6379. Please try again in 1.824s. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+Traceback (most recent call last):
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/main.py", line 24, in get_action
+    action = self.action_generator.send(obs)
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/orchestrator.py", line 68, in execute
+    model_response = self.agent.execute_step(obs, plan, current_plan_step, self.memory, action_set.describe())
+  File "/Users/raj/PycharmProjects/agiinc/agiwebagent/agent_src/agent.py", line 55, in execute_step
+    response = self.client.chat.completions.create(
+        model=self.config.model_name,
+        messages=[{"role": "system", "content": system_msgs}, {"role": "user", "content": user_msgs}]
+    )
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1156, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/raj/miniconda3/envs/agienv/lib/python3.13/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4o-mini in organization org-R9mtzFqmOFC3GL1m4fbsuTJF on tokens per min (TPM): Limit 200000, Used 199703, Requested 6379. Please try again in 1.824s. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+
