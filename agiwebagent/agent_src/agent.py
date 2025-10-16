@@ -1,16 +1,14 @@
-# agent_src/agent.py
+# agiwebagent/agent_src/agent.py
 
 import time
 from openai import OpenAI, RateLimitError
-from . import utils # MODIFIED: No longer need to import 'prompts' directly
+from . import utils
 from .memory import AgentMemory
 
-
 class HighPerformanceAgent:
-    # MODIFIED: Add 'prompts' object to the constructor
     def __init__(self, config, prompts):
         self.config = config
-        self.prompts = prompts # Store the passed-in prompts object
+        self.prompts = prompts
         self.client = OpenAI()
 
     def _call_llm_with_retry(self, **kwargs):
@@ -31,7 +29,6 @@ class HighPerformanceAgent:
                     raise e
 
     def generate_plan(self, obs: dict, action_desc: str) -> str:
-        # MODIFIED: Use self.prompts instead of the global import
         system_msgs = [{"type": "text", "text": self.prompts.PLANNING_SYSTEM_PROMPT}]
         user_msgs = [
             {"type": "text", "text": f"# Goal\n{obs['goal']}"},
@@ -48,8 +45,6 @@ class HighPerformanceAgent:
                      last_action_failed: bool) -> str:
 
         current_instruction = plan[current_plan_step]
-
-        # MODIFIED: Use self.prompts for all prompt templates
         system_prompt_text = self.prompts.EXECUTION_SYSTEM_PROMPT.format(current_step_instruction=current_instruction)
         system_msgs = [{"type": "text", "text": system_prompt_text}]
 
@@ -71,10 +66,15 @@ class HighPerformanceAgent:
         ]
 
         if last_action_failed and obs.get("last_action_error"):
-            user_msgs.append({"type": "text", "text": self.prompts.SELF_CRITIQUE_PROMPT.format(
+            # === THIS IS THE FIX ===
+            # The .format() call now includes the missing 'current_step_instruction' variable.
+            critique_prompt_text = self.prompts.SELF_CRITIQUE_PROMPT.format(
                 current_step_number=current_plan_step + 1,
-                error_message=obs['last_action_error']
-            )})
+                error_message=obs['last_action_error'],
+                goal=obs['goal'],
+                current_step_instruction=current_instruction # ADDED THIS LINE
+            )
+            user_msgs.append({"type": "text", "text": critique_prompt_text})
 
         response = self._call_llm_with_retry(
             model=self.config.model_name,

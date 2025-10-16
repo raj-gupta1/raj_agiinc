@@ -61,7 +61,6 @@ class PromptSelector:
 
     @staticmethod
     def _call_llm_with_retry(client: OpenAI, **kwargs):
-        # ... (this helper function is fine, no changes needed) ...
         max_retries = 5
         base_delay = 1
         for i in range(max_retries):
@@ -75,7 +74,6 @@ class PromptSelector:
 
     @staticmethod
     def _select_profile_with_llm(goal: str, client: OpenAI):
-        # ... (this LLM routing function is fine, no changes needed) ...
         profile_descriptions = "\n".join(f"- **{name}**: {data['description']}" for name, data in PromptSelector.PROMPT_PROFILES.items())
         system_prompt = f"""
 You are an expert routing system. Your task is to select the most appropriate "prompt profile" for the given user goal.
