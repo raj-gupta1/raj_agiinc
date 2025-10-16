@@ -62,7 +62,6 @@ if __name__ == "__main__":
 
     harness = REAL.harness(
         agentargs=agent_args,
-        # Use the new task arguments
         task_name=args.task_name,
         task_type=args.task_type,
         headless=args.headless,
