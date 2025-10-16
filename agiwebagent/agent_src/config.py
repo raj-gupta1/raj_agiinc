@@ -1,6 +1,5 @@
-# agent_src/config.py
+# agiwebagent/agent_src/config.py
 from dataclasses import dataclass
-
 
 @dataclass
 class AgentConfig:

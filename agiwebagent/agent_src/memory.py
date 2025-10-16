@@ -1,23 +1,32 @@
-# agent_src/memory.py
-from typing import List, Dict, Any
-
+# agiwebagent/agent_src/memory.py
 
 class AgentMemory:
     def __init__(self):
-        self.history: List[Dict[str, Any]] = []
+        self.steps = []
 
     def add_step(self, step_number: int, thought: str, action: str, error: str = None):
-        self.history.append({"step": step_number, "thought": thought, "action": action, "error": error})
-
-    def get_formatted_history(self) -> str:
-        if not self.history:
-            return "No actions taken yet."
-        return "\n".join(
-            f"- Step {s['step']}: Action `{s['action']}` resulted in: {'Success' if not s['error'] else f'Failure ({s['error']})'}"
-            for s in self.history)
+        self.steps.append({
+            'step_number': step_number,
+            'thought': thought,
+            'action': action,
+            'error': error
+        })
 
     def get_step_count(self) -> int:
-        return len(self.history)
+        return len(self.steps)
+
+    def get_formatted_history(self) -> str:
+        if not self.steps:
+            return "No actions taken yet."
+
+        history = []
+        for step in self.steps[-3:]:  # Last 3 steps
+            entry = f"Step {step['step_number']}: {step['action']}"
+            if step['error']:
+                entry += f" ❌ Error: {step['error']}"
+            history.append(entry)
+
+        return "\n".join(history)
 
     def clear(self):
-        self.history.clear()
+        self.steps = []
