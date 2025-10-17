@@ -7,7 +7,6 @@ import numpy as np
 from PIL import Image
 
 
-
 def image_to_jpg_base64_url(image: np.ndarray | Image.Image) -> str:
     """Convert image to base64 encoded JPEG URL."""
     if isinstance(image, np.ndarray):

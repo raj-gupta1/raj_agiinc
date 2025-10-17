@@ -73,6 +73,6 @@ if __name__ == "__main__":
         num_workers=1
     )
 
-    print("🚀 Starting run with modular agent and local memory...")
+    print("Starting run with modular agent and local memory...")
     harness.run()
     print("✅ Run finished.")

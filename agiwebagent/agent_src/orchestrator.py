@@ -31,14 +31,13 @@ class TaskOrchestrator:
                     print(f"⏳ LLM rate limited. Retrying in {wait_time} seconds...")
                     time.sleep(wait_time)
                 else:
-                    print(f"🔥🔥🔥 FINAL LLM FAILURE after {max_retries} retries. 🔥🔥🔥")
+                    print(f"FINAL LLM FAILURE after {max_retries} retries.")
                     raise e
             except Exception as e:
-                print(f"🔥🔥🔥 An unexpected error occurred in LLM call: {e} 🔥🔥🔥")
+                print(f"An unexpected error occurred in LLM call: {e}")
                 raise e
 
     def _parse_plan_with_llm(self, model_response: str) -> list[str]:
-        # This function is fine, no changes needed
         system_prompt = "You are a text parsing tool. Extract the numbered list plan. Respond ONLY with the numbered list, each step on a new line."
         try:
             response = self._call_llm_with_retry(
@@ -50,11 +49,10 @@ class TaskOrchestrator:
             plan_lines = re.findall(r"^\s*\d+\.\s+(.*)", plan_text, re.MULTILINE)
             return [line.strip() for line in plan_lines] if plan_lines else []
         except Exception as e:
-            print(f"🔥🔥🔥 PLAN PARSER FAILED: {e} 🔥🔥🔥")
+            print(f" PLAN PARSER FAILED: {e}")
             return []
 
     def _parse_and_validate_action(self, response_text: str) -> str:
-        # This function is fine, no changes needed
         system_prompt = "You are an expert parsing tool. Extract a single action command like `function('param')` from the user's text. Respond with ONLY the command. If no command is found, respond with `send_msg_to_user('Parse Error')`."
         try:
             response = self._call_llm_with_retry(
@@ -78,18 +76,17 @@ class TaskOrchestrator:
                         action = action.replace("'", "").replace('"', '')
             return action
         except Exception as e:
-            print(f"🔥🔥🔥 ACTION PARSER FAILED: {e} 🔥🔥🔥")
+            print(f"ACTION PARSER FAILED: {e}")
             return 'send_msg_to_user("Error: Parser API failed.")'
 
     def _parse_plan_from_critique(self, model_response: str) -> list[str] or None:
-        # This function is fine, no changes needed
         if "new plan:" in model_response.lower():
             plan_lines = re.findall(r"^\s*\d+\.\s+(.*)", model_response, re.MULTILINE)
             return [line.strip() for line in plan_lines] if plan_lines else None
         return None
 
+
     def execute(self, obs, action_set):
-        # === WRAP THE ENTIRE GENERATOR IN A TRY...EXCEPT BLOCK ===
         try:
             if self.agent is None:
                 goal = obs.get('goal', 'No goal provided.')
@@ -100,21 +97,18 @@ class TaskOrchestrator:
             self.memory.clear()
             action_desc = action_set.describe(with_long_description=True, with_examples=False)
 
-            print("\n🤔 Step 0: Agent is creating a plan...")
+            print("\n Step 0: Agent is creating a plan...")
             plan_response = self.agent.generate_plan(obs, action_desc)
             plan = self._parse_plan_with_llm(plan_response)
 
-            if not plan or not any("start" in p.lower() for p in plan) or not any(
-                    "end task" in p.lower() for p in plan):
-                print(
-                    "🔥🔥🔥 CRITICAL FAILURE: Agent generated an invalid plan (missing 'Start' or 'End Task'). Plan was:",
-                    plan)
+            if not plan or not any("start" in p.lower() for p in plan) or not any("end task" in p.lower() for p in plan):
+                print("CRITICAL FAILURE: Agent generated an invalid plan (missing 'Start' or 'End Task'). Plan was:", plan)
                 yield f"report_infeasible('Agent generated an invalid plan: {str(plan)}') "
                 return
 
-            print("\n" + "=" * 20 + " AGENT'S PLAN " + "=" * 21)
+            print("\n" + "=" * 20 + " AGENT'S PLAN " + "=" * 20)
             for i, step in enumerate(plan): print(f"{i + 1}. {step}")
-            print("=" * 58)
+            print("=" * 60)
 
             current_plan_step = 0
             while current_plan_step < len(plan) and self.memory.get_step_count() < self.config.max_steps:
@@ -132,8 +126,7 @@ class TaskOrchestrator:
                 print(f"\n🤔 Step {step_number}: Executing Plan Step {current_plan_step + 1} -> '{instruction}'")
 
                 error_for_prompt = obs.get("last_action_error")
-                model_response = self.agent.execute_step(obs, plan, current_plan_step, self.memory, action_desc,
-                                                         bool(error_for_prompt))
+                model_response = self.agent.execute_step(obs, plan, current_plan_step, self.memory, action_desc, bool(error_for_prompt))
 
                 print("\n" + "=" * 20 + " AGENT'S THOUGHTS " + "=" * 20)
                 print(model_response)
@@ -142,7 +135,7 @@ class TaskOrchestrator:
                 if error_for_prompt:
                     new_plan = self._parse_plan_from_critique(model_response)
                     if new_plan:
-                        print("\n" + "🔥" * 20 + " AGENT RE-PLANNED " + "🔥" * 21)
+                        print("\n" + "*" * 20 + " AGENT RE-PLANNED " + "*" * 21)
                         plan = new_plan
                         current_plan_step = 0
                         for i, step in enumerate(plan): print(f"{i + 1}. {step}")
@@ -170,13 +163,12 @@ class TaskOrchestrator:
 
             yield 'send_msg_to_user("Failed to complete the plan within the step limit.")'
 
-        # === THIS IS THE NEW PART THAT WILL CATCH THE ERROR ===
         except Exception as e:
-            print("\n" + "🔥🔥🔥🔥" * 15)
-            print("🔥🔥🔥 FATAL ORCHESTRATOR ERROR: An exception occurred before the agent could act.")
-            print(f"🔥🔥🔥 ERROR: {e}")
-            print("🔥🔥🔥 TRACEBACK:")
-            traceback.print_exc()  # This will print the full error details
-            print("🔥🔥🔥🔥" * 15 + "\n")
+            print("\n" + "❌" * 15)
+            print("❌ FATAL ORCHESTRATOR ERROR: An exception occurred before the agent could act.")
+            print(f"❌ ERROR: {e}")
+            print("❌ TRACEBACK:")
+            traceback.print_exc()
+            print("❌" * 15 + "\n")
             yield f"report_infeasible('A fatal error occurred in the orchestrator: {str(e)}')"
             return

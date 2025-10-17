@@ -132,6 +132,61 @@ EXECUTION_USER_CONTEXT = """
 {plan}
 # Progress: You are on **Step {current_step_number}: {current_step_instruction}**
 # History of Recent Actions: {history}
+
+# Action Space Reference
+This is the complete set of tools you can use to interact with the web page.
+
+## Element Interaction (by bid)
+These actions target specific elements on the page using their numeric `bid`.
+
+- `fill(bid, text)`: Fills an input field with the specified text.
+- `click(bid, button='left')`: Clicks an element (e.g., button, link).
+- `dblclick(bid, button='left')`: Double-clicks an element.
+- `hover(bid)`: Moves the mouse cursor over an element.
+- `press(bid, key_comb)`: Focuses on an element and then presses a key or key combination (e.g., 'Enter', 'ArrowDown').
+- `focus(bid)`: Brings an element into focus.
+- `clear(bid)`: Clears the text from an input field.
+- `select_option(bid, options)`: Selects one or more options in a `<select>` dropdown.
+- `drag_and_drop(from_bid, to_bid)`: Drags one element and drops it onto another.
+- `upload_file(bid, file)`: Clicks a file input element and selects a file to upload.
+
+## Coordinate-Based Interaction
+These actions target specific (x, y) coordinates on the screen. Use these sparingly, as they are less reliable than `bid`-based actions.
+
+- `mouse_move(x, y)`: Moves the mouse to a location.
+- `mouse_down(x, y, button='left')`: Moves the mouse, then presses and holds a button.
+- `mouse_up(x, y, button='left')`: Moves the mouse, then releases a button.
+- `mouse_click(x, y, button='left')`: Moves the mouse and performs a single click.
+- `mouse_dblclick(x, y, button='left')`: Moves the mouse and performs a double click.
+- `mouse_drag_and_drop(from_x, from_y, to_x, to_y)`: Drags from one location to another.
+
+## Keyboard Actions
+These actions simulate keyboard input without a specific target element.
+
+- `keyboard_down(key)`: Presses and holds a keyboard key (e.g., 'Shift').
+- `keyboard_up(key)`: Releases a keyboard key.
+- `keyboard_press(key_comb)`: Presses a key or combination of keys (e.g., 'Control+C').
+- `keyboard_type(text)`: Types a string of text character by character.
+- `keyboard_insert_text(text)`: Inserts a block of text into the currently focused element.
+
+## Tab & Navigation
+These actions control the browser's tabs and history.
+
+- `new_tab()`: Opens a new browser tab.
+- `tab_close()`: Closes the current tab.
+- `tab_focus(index)`: Switches focus to the tab at the specified index (0-based).
+- `go_back()`: Navigates to the previous page in the session history.
+- `go_forward()`: Navigates to the next page in the session history.
+- `goto(url)`: Navigates the current tab to a new URL.
+
+## Miscellaneous
+General-purpose and control actions.
+
+- `send_msg_to_user(message)`: Sends a message to the user and completes the task. Use this to report findings.
+- `report_infeasible(reason)`: Use this if the task is impossible to complete. This will terminate the task.
+- `scroll(dx, dy)`: Scrolls the page horizontally by `dx` pixels and vertically by `dy` pixels.
+- `noop(seconds)`: Pauses and does nothing for a specified duration.
+
 # Current Page Accessibility Tree:
 {axtree}
 """

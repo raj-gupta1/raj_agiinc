@@ -25,7 +25,7 @@ class HighPerformanceAgent:
                     print(f"⏳ Agent LLM rate limited. Retrying in {wait_time} seconds...")
                     time.sleep(wait_time)
                 else:
-                    print(f"🔥🔥🔥 FINAL AGENT LLM FAILURE after {max_retries} retries. 🔥🔥🔥")
+                    print(f"FINAL AGENT LLM FAILURE after {max_retries} retries.")
                     raise e
 
     def generate_plan(self, obs: dict, action_desc: str) -> str:
@@ -36,13 +36,12 @@ class HighPerformanceAgent:
             {"type": "image_url", "image_url": {"url": utils.image_to_jpg_base64_url(obs["screenshot"])}}
         ]
         response = self._call_llm_with_retry(
-            model=self.config.model_name,
+            model=self.config.plan_model_name,
             messages=[{"role": "system", "content": system_msgs}, {"role": "user", "content": user_msgs}]
         )
         return response.choices[0].message.content
 
-    def execute_step(self, obs: dict, plan: list, current_plan_step: int, memory: AgentMemory, action_desc: str,
-                     last_action_failed: bool) -> str:
+    def execute_step(self, obs: dict, plan: list, current_plan_step: int, memory: AgentMemory, action_desc: str, last_action_failed: bool) -> str:
 
         current_instruction = plan[current_plan_step]
         system_prompt_text = self.prompts.EXECUTION_SYSTEM_PROMPT.format(current_step_instruction=current_instruction)
@@ -66,13 +65,11 @@ class HighPerformanceAgent:
         ]
 
         if last_action_failed and obs.get("last_action_error"):
-            # === THIS IS THE FIX ===
-            # The .format() call now includes the missing 'current_step_instruction' variable.
             critique_prompt_text = self.prompts.SELF_CRITIQUE_PROMPT.format(
                 current_step_number=current_plan_step + 1,
                 error_message=obs['last_action_error'],
                 goal=obs['goal'],
-                current_step_instruction=current_instruction # ADDED THIS LINE
+                current_step_instruction=current_instruction
             )
             user_msgs.append({"type": "text", "text": critique_prompt_text})
 
