@@ -6,9 +6,8 @@
 3. It features advanced reasoning capabilities, including self-correction, loop-breaking, and hyper-atomic planning to solve complex, multi-step web automation tasks.
 <br>
 
-<h2>Current Progress </h2>
+<h2>Current Progress</h2>
 <h4>
-I have already built
 - Designed high level project architecture
 - Orchestrator routing to prompts, agent, config, prompt_selector, main.
 - Agent Designing
