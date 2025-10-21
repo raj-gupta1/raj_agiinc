@@ -16,9 +16,17 @@
 - Prompt Routing
 - LLM as a Judge
 - Implemented prompt papers like Chain of Thought prompting.
-- Prompt Creation for OMNIZON and DASHDISH.
+- Prompt Creation for OMNIZON and NetworkIn.
 - Model testing
-- Setup and eval on realeval for OMNIZON and some tasks of DASHDISH.
+- Setup and eval on realeval for OMNIZON and some tasks of NetworkIn.
+</h4>
+
+<h2>Cost Limitations</h2>
+<h4>
+
+- I am using cheap gpt-40-mini for everything and I can't test and fine tune all agents as it costs me money.
+- I also have time limitations to work on these lengthy tasks.
+- I can build better agent than these if above limitations are removed.
 </h4>
 
 <h2>Future Work I will do</h2>
@@ -116,17 +124,17 @@ All commands should be run from the root agiinc/ directory. The main script is l
 Running a Single Task<br>
 To run a specific, named task, use the --task_name argument. This is perfect for debugging.
 
-Example (DashDish - Order Pizza):
+Example (networkin):
 ```bash
-python agiwebagent/main.py --task_name webclones.dashdish-3 --no-cache --headless true
+python agiwebagent/main.py --task_name webclones.networkin-3 --no-cache --headless true
 ```
 
 Running a Full Task Suite<br>
 To run all tasks for a specific website (like all 10 omnizon tasks), use the --task_type argument. This is ideal for benchmarking.
 
-Example (Run all DashDish tasks):
+Example (Run all networkin tasks):
 ```bash
-python agiwebagent/main.py --task_type dashdish --no-cache --headless true
+python agiwebagent/main.py --task_type networkin --no-cache --headless true
 ```
 
 Example (Run all Omnizon tasks):
