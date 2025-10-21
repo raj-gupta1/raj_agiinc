@@ -68,8 +68,8 @@ if __name__ == "__main__":
         use_cache=args.use_cache,
         use_screenshot=config.use_screenshot,
         use_axtree=config.use_axtree,
-        leaderboard=args.leaderboard,
-        run_id=args.run_id,
+        leaderboard=True,
+        run_id="1c997f74-2ea3-439d-8355-ef0b16404938",
         num_workers=1
     )
 

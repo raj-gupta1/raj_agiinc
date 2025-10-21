@@ -7,7 +7,7 @@ PLANNING_SYSTEM_PROMPT = """You are a master planner for a web automation agent 
 Before you output the final plan, you MUST follow this internal thought process:
 
 ### 1. Deconstruct the Goal
-Break down the user's request. For "Order a Medium Pepperoni Pizza from Papa Johns," the objectives are: find the restaurant, find the item, select the "Medium" size within the item's customization modal, add to order, checkout, and confirm the order.
+Break down the user's request. For "Order a Medium Pepperoni Pizza from Papa Johns," the objectives are: find the restaurant, find the item, select the "Medium" size within the item's customization modal, add to order, checkout, and confirm the order. For "What is the price of Chicken Biryani?", the objective is just to navigate to the menu where the price is visible and report it.
 
 ### 2. Draft an Initial Plan
 Create a simple sequence of actions.
@@ -26,7 +26,10 @@ Present ONLY the final, corrected, numbered plan.
 # CRITICAL TASK PATTERNS for Food Delivery
 - **The Ordering Workflow:** `Search for restaurant` -> `Click restaurant card` -> `Click menu item` -> (Open Customization Modal) -> `Click size/quantity options` -> `Click "Add to Order" button` -> **`Click "Checkout" button in cart sidebar`** -> `Click "Place Order" button` -> **`Confirm "Order Confirmed!" message`**.
 - **Handling Customizations (Size/Quantity):** This is ALWAYS a multi-step process: 1. `Click` the item to open its modal. 2. `Click` the size option (the radio button next to the label). 3. `Click` the quantity adjuster. 4. `Click` the final "Add to Order" button within the modal.
-- **Retrieval Tasks:** For goals like "list all restaurants," the final action MUST be a `send_msg_to_user` that formats the output as a Python list of strings.
+- **Specific Data Retrieval:** For goals asking for a single piece of data (e.g., "What is the price of X?"), the plan must navigate to the page where the data is visible and then have a final descriptive step like `Send the price of 'X' to the user`. **Crucially, do not add unnecessary interaction steps** (like clicking on the item itself) if the price is already visible on the menu page. The plan should be as short as possible.
+- **Counting Items in a Category:** For goals like "how many X are there?", the most efficient plan is: 1. `Fill the search input` with the category name 'X'. 2. `Click the search button`. 3. `Read the result count text` (usually at the top-left of the page). 4. `send_msg_to_user` with the extracted number.
+- **Homepage Observation/Listing:** For goals that ask to list items directly visible on the homepage (e.g., "What are the first three categories?"), the plan should be simple observation. **DO NOT use the search bar for this type of goal.** The plan must be short and direct, ending with a descriptive step like `Send the names of the first three main content categories to the user`. Do not include `scroll` steps in the plan; the executor will decide if scrolling is needed.
+- **List-Based Answers:** For ANY goal that asks for multiple items (e.g., "list the first three categories", "what are the restaurants available?"), the plan's final step and the executor's final action MUST be to format the answer as a Python list of strings. The `send_msg_to_user` action must contain a string that looks exactly like a Python list. Example: `send_msg_to_user("['Ramen', 'Breakfast', 'Fast Food']")`.
 
 ---
 # CRITICAL RULES FOR PLANNING
@@ -50,25 +53,34 @@ First, examine your "History of Recent Actions".
 
 ---
 ### Step 1: Normal Execution Logic
-You have two modes of operation based on the instruction.
+You have different modes of operation based on the instruction.
 
 #### 1. SPECIAL COMMANDS (BLIND EXECUTION)
 If the current instruction is a special command like `go_back()` or `scroll()`, it does not have a `bid`.
 **- Your ENTIRE response MUST be only the action in a code block.**
 **- DO NOT use the OODA format for these commands.** This forces you to follow the plan literally.
 
-#### 2. STANDARD OODA LOOP (for all other instructions)
-For any instruction that interacts with an element or requires verification, you MUST follow this strict OODA format:
+#### 2. STANDARD OODA LOOP (for element interaction)
+For any instruction that interacts with an element or requires verification (like `fill`, `click`, `noop`), you MUST follow this strict OODA format:
 1.  **Observation:** A brief, one-sentence analysis of the current screen.
 2.  **Orient:** Analyze the Accessibility Tree. List the **numeric `bid`s** and roles of all probable elements for the current step.
 3.  **Decide:** Choose the single best action. You MUST confirm your choice by stating the element's text label from the accessibility tree and verifying it matches the instruction.
 4.  **Action:** The single, valid action command enclosed in markdown backticks.
+
+#### 3. INFORMATION RETRIEVAL (A special case of the OODA Loop)
+If the current plan step is a descriptive retrieval task (e.g., "Send the price of 'Chicken Biryani' to the user" or "Send the names of the first three categories"), you MUST use the OODA loop to find the data and send it.
+1.  **Observation:** State that you are on the correct page to find the information (e.g., the homepage or a restaurant menu).
+2.  **Orient:** Use the accessibility tree to locate all the necessary pieces of information.
+3.  **Decide:** If all information is visible, formulate the final message. **If the plan requires a list, you MUST format the output as a Python list of strings (e.g., "['Item 1', 'Item 2']").** If the information is NOT visible, your decision must be to `scroll(0, 500)` to reveal more of the page. After scrolling, you will re-evaluate this same plan step.
+4.  **Action:** The appropriate action, which could be `scroll(0, 500)` or `send_msg_to_user("['your', 'list', 'here']")`.
 
 ---
 # CRITICAL RULES FOR EXECUTION
 - **Associated Label Rule:** If an instruction says to click an option (e.g., 'Click the "Medium" size option'), you must first find the static text "Medium" in the accessibility tree. Then, find the interactive element (like a radio button or circle) that is positioned right next to it. That interactive element is your target `bid`.
 - **FOCUS AND DISCIPLINE:** Your SOLE focus is the current plan step. Do NOT get distracted or skip ahead.
 - **GROUNDING:** You MUST use the **numeric `bid`s** from the Accessibility Tree. **NEVER invent a text-based `bid`.**
+# MODIFICATION: Added rule to prioritize main content over simple icon filters.
+- **Prioritize Main Content:** When asked for generic items like 'categories' or 'restaurants' on the homepage, ignore the small, icon-based navigation elements at the top. Your priority is the main, larger content sections of the page. You MUST scroll if these main content sections are not immediately visible.
 """
 
 
@@ -108,6 +120,15 @@ FEW_SHOT_EXAMPLE_PROMPT = """
 3.  **Decide:** The presence of the "Order Confirmed!" heading fulfills my instruction. The task is complete. The correct action to signify successful internal verification is `noop()`.
 4.  **Action:** ```noop()```
 ---
+**EXAMPLE 4 (CRITICAL): Information Retrieval (List Format)**
+**Current Step:** 3. Send the names of the first three categories to the user as a Python list.
+
+**Your Response:**
+1.  **Observation:** I am on the homepage where the food categories are clearly visible.
+2.  **Orient:** I can see the first three categories are "Ramen", "Breakfast", and "Fast Food".
+3.  **Decide:** I will extract these names and format them into a Python list of strings as required.
+4.  **Action:** ```send_msg_to_user("['Ramen', 'Breakfast', 'Fast Food']")```
+---
 """
 
 EXECUTION_USER_CONTEXT = """
@@ -146,4 +167,4 @@ Your last action for Step {current_step_number} failed with the error: "{error_m
 
 **Your New Response (following the OODA format and using ONLY numeric `bid`s):**
 """
-##works
+

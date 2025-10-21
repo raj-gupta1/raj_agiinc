@@ -1,13 +1,13 @@
 # agent_src/orchestrator.py
-
 import re
 import time
-import traceback  # Import the traceback module
-from openai import OpenAI, RateLimitError
+import traceback
+from openai import OpenAI
 from .agent import HighPerformanceAgent
 from .memory import AgentMemory
 from .config import AgentConfig
 from .prompt_selector import PromptSelector
+from . import llm_utils
 
 
 class TaskOrchestrator:
@@ -17,30 +17,11 @@ class TaskOrchestrator:
         self.memory = AgentMemory()
         self.client = OpenAI()
 
-    def _call_llm_with_retry(self, **kwargs):
-        """Calls the OpenAI API with exponential backoff for rate limit errors."""
-        max_retries = 5
-        base_delay = 1
-        for i in range(max_retries):
-            try:
-                response = self.client.chat.completions.create(**kwargs)
-                return response
-            except RateLimitError as e:
-                if i < max_retries - 1:
-                    wait_time = base_delay * (2 ** i)
-                    print(f"⏳ LLM rate limited. Retrying in {wait_time} seconds...")
-                    time.sleep(wait_time)
-                else:
-                    print(f"FINAL LLM FAILURE after {max_retries} retries.")
-                    raise e
-            except Exception as e:
-                print(f"An unexpected error occurred in LLM call: {e}")
-                raise e
-
     def _parse_plan_with_llm(self, model_response: str) -> list[str]:
         system_prompt = "You are a text parsing tool. Extract the numbered list plan. Respond ONLY with the numbered list, each step on a new line."
         try:
-            response = self._call_llm_with_retry(
+            response = llm_utils.call_llm_with_retry(
+                client=self.client,
                 model=self.config.parser_model_name,
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": model_response}],
                 temperature=0, max_tokens=500
@@ -53,31 +34,20 @@ class TaskOrchestrator:
             return []
 
     def _parse_and_validate_action(self, response_text: str) -> str:
-        system_prompt = "You are an expert parsing tool. Extract a single action command like `function('param')` from the user's text. Respond with ONLY the command. If no command is found, respond with `send_msg_to_user('Parse Error')`."
-        try:
-            response = self._call_llm_with_retry(
-                model=self.config.parser_model_name,
-                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": response_text}],
-                temperature=0, max_tokens=150
-            )
-            action = response.choices[0].message.content.strip().replace("```", "")
-
-            match = re.search(r"(\w+)\((.*)\)", action)
+        code_blocks = re.findall(r"```(.*?)```", response_text, re.DOTALL)
+        if code_blocks:
+            action = code_blocks[-1].strip() # Get the last action
+            match = re.match(r"fill\('(\d+)',\s*'(.*)'\)", action)
             if match:
-                action_name, args_str = match.groups()
-                if action_name in ['click', 'fill']:
-                    bid_match = re.search(r"(?<!['\"])\b(\d+)\b(?!['\"])", args_str)
-                    if bid_match:
-                        bid_num = bid_match.group(1)
-                        corrected_args = args_str.replace(bid_num, f"'{bid_num}'", 1)
-                        action = f"{action_name}({corrected_args})"
-                elif action_name == 'scroll':
-                    if "'" in args_str or '"' in args_str:
-                        action = action.replace("'", "").replace('"', '')
+                bid, text_to_fill = match.groups()
+                sanitized_text = text_to_fill.replace("'", "")
+                action = f"fill('{bid}', '{sanitized_text}')"
+                print(f"🔧 Sanitized action: {action}")
+                return action
             return action
-        except Exception as e:
-            print(f"ACTION PARSER FAILED: {e}")
-            return 'send_msg_to_user("Error: Parser API failed.")'
+        else:
+            print("ACTION PARSER FAILED: Could not find any code blocks ```...``` in the response.")
+            return 'send_msg_to_user("Error: Parser failed to extract action.")'
 
     def _parse_plan_from_critique(self, model_response: str) -> list[str] or None:
         if "new plan:" in model_response.lower():
@@ -145,6 +115,12 @@ class TaskOrchestrator:
                 action = self._parse_and_validate_action(model_response)
                 print(f"🎬 Action to execute: {action}")
                 new_obs = yield action
+
+                error_after_action = new_obs.get("last_action_error")
+                if error_after_action:
+                    print(f"❌ Action Result: Failed with error -> {error_after_action}")
+                else:
+                    print("✅ Action Result: Success")
 
                 if action.startswith("send_msg_to_user"):
                     print("✅ Agent has issued a finish command. Terminating task.")
