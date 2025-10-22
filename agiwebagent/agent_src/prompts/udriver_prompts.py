@@ -1,30 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""
-This file contains the system prompts for the Udriver (ride-sharing) web agent.
-It includes prompts for planning, execution, action space, few-shot examples,
-user context, and self-critique.
-
-This prompt has been updated to handle critical failures observed in logs:
-1.  **Autocomplete Handling:** All booking patterns (1, 2, 3, 5) NOW MANDATE
-    a "Click 'first autocomplete option'" step after every "Fill '... location'" step.
-    This is to prevent the autocomplete dropdown from blocking subsequent clicks
-    (which causes "intercepts pointer events" errors). See Rule 7.
-2.  **Booking Workflow:** The booking process is clarified per user instructions.
-    It's a two-click process: 1) Click the ride option CARD (e.g., 'UdriverX'),
-    2) Click the final 'Request [Ride Option]' BUTTON. This is updated in all
-    Patterns and Examples.
-3.  **Default Ride Choice:** If no ride preference is given, the plan MUST
-    default to clicking the 'first available' ride option card (Rule 5).
-4.  **Retrieved Data:** Added Rule 8 to ensure the planner references retrieved
-    data abstractly (e.g., [retrieved address]) and the executor uses the value.
-"""
-
-# =============================================================================
-# PLANNING PROMPT
-# =============================================================================
-
 PLANNING_SYSTEM_PROMPT = """
 You are a master planner for a web automation agent on a ride-sharing site (Udriver).
 **This prompt is specialized for ALL ride-booking and trip management tasks.**
@@ -254,10 +227,6 @@ ACTION_SPACE_PROMPT = """
 """
 
 
-# =============================================================================
-# FEW-SHOT EXAMPLES PROMPT
-# =============================================================================
-
 FEW_SHOT_EXAMPLE_PROMPT = """
 ---
 **EXAMPLE 1: Standard Action (Fill Location with Autocomplete)**
@@ -321,10 +290,6 @@ FEW_SHOT_EXAMPLE_PROMPT = """
 ---
 """
 
-
-# =============================================================================
-# EXECUTION CONTEXT PROMPT
-# =============================================================================
 
 EXECUTION_USER_CONTEXT = """
 # Goal: {goal}
