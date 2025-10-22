@@ -57,10 +57,10 @@ Follow these patterns precisely.
 # EXAMPLES
 
 **EXAMPLE 1: Connect from Search (Pattern 1 -> 4)**
-*Goal:* Connect J. Smith.
+*Goal:* Connect Raj Gupta.
 *Response:*
 1. Start
-2. Fill search with "J. Smith". 3. Click search. 4. Click profile link. 5. Click "Connect". 6. Click "Send without note". 7. End Task
+2. Fill search with "Raj Gupta". 3. Click search. 4. Click profile link. 5. Click "Connect". 6. Click "Send without note". 7. End Task
 
 **EXAMPLE 2: Create Post w/ Generation (Pattern 6, Prep 4)**
 *Goal:* Post 3 AI trends.
