@@ -65,13 +65,13 @@ class PromptSelector:
                 return client.chat.completions.create(**kwargs)
             except RateLimitError:
                 if i < max_retries - 1:
-                    print(f"⏳ LLM rate limited. Retrying in {base_delay * (2 ** i)} seconds...")
+                    print(f"LLM rate limited. Retrying in {base_delay * (2 ** i)} seconds...")
                     time.sleep(base_delay * (2 ** i))
                 else:
-                    print("🔥🔥🔥 LLM rate limit exceeded after max retries.")
+                    print("LLM rate limit exceeded after max retries.")
                     raise
             except Exception as e:
-                print(f"🔥🔥🔥 An unexpected error occurred in LLM call: {e}")
+                print(f"An unexpected error occurred in LLM call: {e}")
                 raise
 
     @staticmethod
@@ -84,7 +84,7 @@ class PromptSelector:
             If absolutely NO specific profile matches, respond with "general_web_tasks".
             Available Profiles:\n{profile_descriptions}"""
         try:
-            print("🤖 Prompt Selector: Calling LLM to route goal...")
+            print("Prompt Selector: Calling LLM to route goal...")
             response = PromptSelector._call_llm_with_retry(
                 client=client, model="gpt-4o-mini",
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": f"User Goal: \"{goal}\""}],
@@ -92,41 +92,41 @@ class PromptSelector:
             )
             profile_name = response.choices[0].message.content.strip().lower().replace('.', '')
             if profile_name not in PromptSelector.PROMPT_PROFILES:
-                 print(f"⚠️ LLM chose an invalid profile name '{profile_name}'. Correcting to fallback.")
+                 print(f"LLM chose an invalid profile name '{profile_name}'. Correcting to fallback.")
                  profile_name = "general_web_tasks"
-            print(f"🧠 LLM Router analyzed goal and selected profile: '{profile_name}'")
+            print(f" LLM Router analyzed goal and selected profile: '{profile_name}'")
             return profile_name
         except Exception as e:
-            print(f"🔥🔥🔥 LLM ROUTER FAILED: {e}. Defaulting to '{PromptSelector.FALLBACK_PROMPTS_PATH}'.")
+            print(f"LLM ROUTER FAILED: {e}. Defaulting to '{PromptSelector.FALLBACK_PROMPTS_PATH}'.")
             return "general_web_tasks"
 
     @staticmethod
     def get_prompts(goal: str, client: OpenAI):
         print("\n" + "="*20 + " PROMPT SELECTION " + "="*20)
-        print(f"🎯 Routing Goal: {goal}")
+        print(f" Routing Goal: {goal}")
         chosen_profile_name = PromptSelector._select_profile_with_llm(goal, client)
         fallback_profile_data = PromptSelector.PROMPT_PROFILES.get("general_web_tasks", {"path": PromptSelector.FALLBACK_PROMPTS_PATH})
         profile = PromptSelector.PROMPT_PROFILES.get(chosen_profile_name)
 
         if profile:
             module_path = profile['path']
-            print(f"📦 Loading specialized '{chosen_profile_name}' prompts from: {module_path}")
+            print(f" Loading specialized '{chosen_profile_name}' prompts from: {module_path}")
         else:
-            print(f"⚠️ Profile '{chosen_profile_name}' not found or invalid. Falling back to default.")
+            print(f" Profile '{chosen_profile_name}' not found or invalid. Falling back to default.")
             module_path = fallback_profile_data["path"]
             chosen_profile_name = "general_web_tasks"
 
         try:
             prompts_module = importlib.import_module(module_path)
-            print(f"✅ Successfully loaded module: {module_path}")
+            print(f" Successfully loaded module: {module_path}")
         except (ImportError, ModuleNotFoundError) as e:
-            print(f"🔥🔥🔥 CRITICAL FAILURE: Could not import '{module_path}'. Error: {e}")
-            print(f"🔄 Falling back to default module: {PromptSelector.FALLBACK_PROMPTS_PATH}")
+            print(f" CRITICAL FAILURE: Could not import '{module_path}'. Error: {e}")
+            print(f" Falling back to default module: {PromptSelector.FALLBACK_PROMPTS_PATH}")
             try:
                 prompts_module = importlib.import_module(PromptSelector.FALLBACK_PROMPTS_PATH)
-                print(f"✅ Successfully loaded fallback module: {PromptSelector.FALLBACK_PROMPTS_PATH}")
+                print(f" Successfully loaded fallback module: {PromptSelector.FALLBACK_PROMPTS_PATH}")
             except ImportError as final_e:
-                print(f"🔥🔥🔥 FATAL: Could not even load the default prompts ('{PromptSelector.FALLBACK_PROMPTS_PATH}'). Error: {final_e}")
+                print(f" FATAL: Could not even load the default prompts ('{PromptSelector.FALLBACK_PROMPTS_PATH}'). Error: {final_e}")
                 class EmptyPrompts:
                     PLANNING_SYSTEM_PROMPT = "FATAL: Planning prompt missing."
                     EXECUTION_SYSTEM_PROMPT = "FATAL: Execution prompt missing."

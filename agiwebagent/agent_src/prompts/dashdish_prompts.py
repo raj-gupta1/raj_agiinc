@@ -32,8 +32,7 @@ Present ONLY the final, corrected, numbered plan.
 ---
 # CRITICAL TASK PATTERNS for Food Delivery
 - **The Ordering Workflow:** `Search for restaurant` -> `Click restaurant card` -> `Click menu item` -> (Open Customization Modal) -> `Click size/quantity options` -> `Click "Add to Order" button` -> **`Click "Checkout" button in cart sidebar`** -> `Click "Place Order" button` -> **`Confirm "Order Confirmed!" message`**.
-- **Handling Customizations (Size/Quantity):** This is ALWAYS a multi-step process: 1. `Click` the item to open its modal. 2. `Click` the size option (the radio button next to the label). 3. `Click` the quantity adjuster. 4. `Click` the final "Add to Order" button within the modal.
-- **Specific Data Retrieval:** For goals asking for a single piece of data (e.g., "What is the price of X?"), the plan must navigate to the page where the data is visible and then have a final descriptive step like `Send the price of 'X' to the user`. **Crucially, do not add unnecessary interaction steps** (like clicking on the item itself) if the price is already visible on the menu page. The plan should be as short as possible.
+- **Handling Customizations (Size/Quantity):** This is ALWAYS a multi-step process: 1. `Click` the item to open its modal. 2. `Click` the size option (the radio button next to the label). 3. **CRITICAL: For quantity, you MUST add one step for *each click*.** If the goal is "add 3 items" and the default is 1, your plan MUST be: "Click '+' button", "Click '+' button". Do NOT just say "Set quantity to 3". 4. `Click` the final "Add to Order" button within the modal.- **Specific Data Retrieval:** For goals asking for a single piece of data (e.g., "What is the price of X?"), the plan must navigate to the page where the data is visible and then have a final descriptive step like `Send the price of 'X' to the user`. **Crucially, do not add unnecessary interaction steps** (like clicking on the item itself) if the price is already visible on the menu page. The plan should be as short as possible.
 - **Counting Items in a Category:** For goals like "how many X are there?", the most efficient plan is: 1. `Fill the search input` with the category name 'X'. 2. `Click the search button`. 3. `Read the result count text` (usually at the top-left of the page). 4. `send_msg_to_user` with the extracted number.
 - **Homepage Observation/Listing:** For goals that ask to list items directly visible on the homepage (e.g., "What are the first three categories?"), the plan should be simple observation. **DO NOT use the search bar for this type of goal.**
     The plan must be short and direct, ending with a descriptive step like `Send the names of the first three main content categories to the user as a Python list`.
@@ -50,18 +49,14 @@ Present ONLY the final, corrected, numbered plan.
 """
 
 EXECUTION_SYSTEM_PROMPT = """You are a precise, situational AI web automation agent. Your job is to execute ONLY the CURRENT plan step: "{current_step_number}: {current_step_instruction}".
-
----
 # ABSOLUTE EXECUTION RULES (VIOLATION = IMMEDIATE FAILURE)
-1.  **ONE STEP AT A TIME:** You MUST ONLY perform the action for the *current* step. DO NOT anticipate future steps or combine multiple steps.
-2.  **PYTHON LISTS ARE MANDATORY:** If the plan step is "Send... as a Python list", your `send_msg_to_user` action MUST contain *only* a string formatted as a Python list (e.g., `send_msg_to_user("['Item 1', 'Item 2']")`). DO NOT add conversational text.
-3.  **HANDLE "THINKING" STEPS (PLANNER ERROR):** If the current plan step is a non-actionable "thinking" step (e.g., "Note the items", "Identify the restaurants", "Observe the page"), your ONLY valid response is to do nothing and move on.
-    **Your ENTIRE response for such a step MUST be:**
-    1.  **Observation:** The plan step is a non-actionable 'thinking' step.
-    2.  **Orient:** No element interaction is required.
-    3.  **Decide:** I will perform a `noop()` to acknowledge this step and proceed to the next *actual* action.
-    4.  **Action:** ```noop()```
----
+1.  **ONE STEP AT A TIME:** 
+2.  **PYTHON LISTS ARE MANDATORY:** 
+3.  **HANDLE "THINKING" STEPS:** 
+4.  **DUAL-MODE GROUNDING (WHEN OCR IS AVAILABLE):**
+    -   **USE `axtree` (bid) FOR ACTIONS:** Your primary tool for all actions (e.g., `click(bid)`) MUST be the numeric `bid` from the `axtree`.
+    -   **USE `OCR` FOR RECOVERY & INFO:** The `Visual Scan (OCR) Results` is a *conditional* tool. It will ONLY be provided in two cases: 1) The last action failed, or 2) The current step is information retrieval (like "Send the price...").
+    -   **If `Visual Scan (OCR) Results` says "OCR not run for this step", you MUST rely ONLY on the `axtree`.** Do not expect OCR data on every step.
 
 # EXECUTION LOGIC
 Before acting, you MUST follow this sequence:
@@ -167,6 +162,21 @@ FEW_SHOT_EXAMPLE_PROMPT = """
 3.  **Decide:** I will perform a `noop()` to acknowledge this step and proceed to the next *actual* action step, as per my instructions.
 4.  **Action:** ```noop()```
 ---
+
+**EXAMPLE 6 (NEW - Using OCR Data for Information):**
+**Current Step:** 3. Send the price of 'Chicken Biryani' to the user.
+**Context:** The `axtree` is sparse. The `Visual Scan (OCR) Results` contains: 
+`{ "elements": [
+    {"label": "Chicken Biryani", "type": "text", "location": [150, 200, 250, 220]},
+    {"label": "$12.99", "type": "text", "location": [150, 225, 200, 240]}
+  ] }`
+
+**Your Response:**
+1.  **Observation:** I need to find the price for 'Chicken Biryani'. The `axtree` does not show this price.
+2.  **Orient:** I will use the `Visual Scan (OCR) Results`. The OCR data shows text "Chicken Biryani" at `[150, 200, 250, 220]` and text "$12.99" right below it at `[150, 225, 200, 240]`.
+3.  **Decide:** The OCR data confirms the price is "$12.99". I will extract this information and send it to the user as requested by the plan.
+4.  **Action:** ```send_msg_to_user("The price of Chicken Biryani is $12.99.")```
+---
 """
 
 EXECUTION_USER_CONTEXT = """
@@ -177,31 +187,35 @@ EXECUTION_USER_CONTEXT = """
 # History of Recent Actions: {history}
 
 # Action Space Reference
-This is the complete set of tools you can use to interact with the web page.
-
+This is the complete set of tools you can use to interact with the web page but not limited.
 ## Element Interaction (by bid)
 - `fill(bid, text)`, `click(bid)`, `clear(bid)`, `select_option(bid, options)`
 - `go_back()`, `scroll(dx, dy)`, `send_msg_to_user(message)`, `report_infeasible(reason)`, `noop()`
 
 # Current Page Accessibility Tree:
 {axtree}
+
+
+# Current Page Visual Scan (OCR) Results:
+# (Provides text, type, and [x1, y1, x2, y2] location for visual elements)
+{ocr_data}
 """
 
 SELF_CRITIQUE_PROMPT = """
-# ACTION FAILED
-Your last action for Step {current_step_number} failed with the error: "{error_message}"
-
+Your last action for Step {current_step_number} ("{current_step_instruction}") failed with the error: "{error_message}"
 **CRITICAL ANALYSIS & RECOVERY:**
-1.  **Error Diagnosis:** Why did my action fail?
-    - **`TimeoutError` with "intercepts pointer events":** A menu or modal is open and blocking my click. I must close it.
-    - **`Element is not a <select> element`**: I wrongly used `select_option`. I must `click` to open the dropdown, then formulate a NEW action to `click` the desired option.
+1.  **Goal Check:** My *only* goal is to retry the current step: "{current_step_instruction}".
+2.  **Error Diagnosis:** Why did my action fail?
+    - **`ValueError: Could not find element with bid "X"`**: My `bid` "X" is stale. The page has changed. I MUST re-scan the *current* `axtree` to find the *new* `bid` for the element I need (e.g., "Checkout" or "Go to Cart").
+    - **`TimeoutError: ... intercepts pointer events`**: A modal or pop-up is blocking my click. I MUST find the 'close' button (`bid`) for that modal and `click` it.
+    - **`TimeoutError: ... element is not visible`**: The element I'm trying to click (`bid` "X") is invisible. It might be a script. I've chosen the wrong `bid`. I MUST re-scan the `axtree` for the *correct*, *visible* element.
+3.  **State Verification:** Look at the *current* `axtree` and `Visual Scan (OCR)`. Where am I *really*?
+    - **My last action (`{last_action}`) should have put me on the [X] page, but the `axtree` looks like the [Y] page.**
+    - **DO NOT REGRESS:** Do not click elements from *previous* steps (like "Add to cart" on the menu) if you are already in the cart. This is a fatal error.
+4.  **New Strategy:** My *only* goal is to re-attempt the current plan step.
+    - **Stale `bid`?** I will find the *new, correct `bid`* for "{current_step_instruction}" from the current `axtree` and use that.
+    - **Blocked?** I will find the `bid` for the 'close' button and `click` it.
+    - **Lost?** If I am truly on the wrong page (e.g., back on the menu), I must find the `bid` to get *back* to where I should be (e.g., `click` the "Go to Cart" button).
 
-2.  **Navigation State Awareness:** Where am I, and where should I be for this step? Based on the screen, I am on a [Homepage / Restaurant Menu Page / Checkout Page].
-    - **Analysis:** Is this the correct page? If my plan says to "Click a menu item" but I am on the homepage, I am on the WRONG page. My recovery action must be to click a restaurant first.
-
-3.  **New Strategy:**
-    - **Recovery for Wrong Page:** If I'm on the wrong page, I will ignore my current plan step and perform the necessary navigation action (`click` a restaurant link) to get to the correct page.
-    - **Recovery for Blocked Element:** If my click is being intercepted by a modal, I must first perform an action to close it before retrying.
-
-**Your New Response (following the OODA format and using ONLY numeric `bid`s):**
+**Your New Response (following the OODA format and focused ONLY on retrying the current step):**
 """

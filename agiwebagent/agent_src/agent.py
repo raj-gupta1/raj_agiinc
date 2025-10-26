@@ -1,7 +1,7 @@
 # agiwebagent/agent_src/agent.py
 
 from openai import OpenAI
-from . import utils, llm_utils # <--- IMPORT THE NEW UTILS FILE
+from . import utils, llm_utils
 from .memory import AgentMemory
 
 class HighPerformanceAgent:
@@ -17,9 +17,9 @@ class HighPerformanceAgent:
             {"type": "text", "text": self.prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
             {"type": "image_url", "image_url": {"url": utils.image_to_jpg_base64_url(obs["screenshot"])}}
         ]
-        # CHANGE THE CALL to use the new utils function
+
         response = llm_utils.call_llm_with_retry(
-            client=self.client, # Pass the client object
+            client=self.client,
             model=self.config.plan_model_name,
             messages=[{"role": "system", "content": system_msgs}, {"role": "user", "content": user_msgs}]
         )
@@ -27,7 +27,10 @@ class HighPerformanceAgent:
 
     def execute_step(self, obs: dict, plan: list, current_plan_step: int, memory: AgentMemory, action_desc: str, last_action_failed: bool) -> str:
         current_instruction = plan[current_plan_step]
-        system_prompt_text = self.prompts.EXECUTION_SYSTEM_PROMPT.format(current_step_instruction=current_instruction)
+        system_prompt_text = self.prompts.EXECUTION_SYSTEM_PROMPT.format(
+            current_step_number=current_plan_step + 1,
+            current_step_instruction=current_instruction
+        )
         system_msgs = [{"type": "text", "text": system_prompt_text}]
         user_context = self.prompts.EXECUTION_USER_CONTEXT.format(
             goal=obs['goal'],
@@ -36,7 +39,8 @@ class HighPerformanceAgent:
             current_step_number=current_plan_step + 1,
             current_step_instruction=current_instruction,
             history=memory.get_formatted_history(),
-            axtree=obs['axtree_txt']
+            axtree=obs['axtree_txt'],
+            ocr_data=obs.get('ocr_data', 'No OCR data available.')
         )
         user_msgs = [
             {"type": "text", "text": user_context},
@@ -50,13 +54,12 @@ class HighPerformanceAgent:
                 error_message=obs['last_action_error'],
                 goal=obs['goal'],
                 current_step_instruction=current_instruction,
-                history=memory.get_formatted_history()  # <-- ADD THIS LINE
+                history=memory.get_formatted_history()
             )
             user_msgs.append({"type": "text", "text": critique_prompt_text})
 
-        # CHANGE THE CALL in this function as well
         response = llm_utils.call_llm_with_retry(
-            client=self.client,  # Pass the client object
+            client=self.client,
             model=self.config.model_name,
             messages=[{"role": "system", "content": system_msgs}, {"role": "user", "content": user_msgs}]
         )

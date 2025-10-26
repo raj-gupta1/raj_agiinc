@@ -1,4 +1,4 @@
-# main.py
+# agiwebagent/main.py
 
 import sys
 import argparse
@@ -43,8 +43,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the modular High-Performance Agent.")
 
     parser.add_argument("--model", type=str, default="gpt-4o-mini", help="Model to use")
+    parser.add_argument("--vision_model", type=str, default="gpt-4o", help="Vision model for OCR")
     parser.add_argument("--headless", type=str2bool, default=False, help="Run in headless mode")
     parser.add_argument("--use_screenshot", type=str2bool, default=True, help="Use screenshots")
+    parser.add_argument("--use_ocr", type=str2bool, default=True, help="Use visual OCR scan on screenshots")
     parser.add_argument("--no-cache", action="store_false", dest="use_cache", help="Disable caching and force a rerun")
     parser.add_argument("--leaderboard", type=str2bool, default=False, help="Submit to leaderboard")
     parser.add_argument("--run_id", type=str, default=None, help="Run ID for leaderboard submission")
@@ -54,10 +56,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if not args.task_name and not args.task_type:
-        print("❌ ERROR: You must specify either --task_name or --task_type.")
+        print("ERROR: You must specify either --task_name or --task_type.")
         sys.exit(1)
 
-    config = AgentConfig(model_name=args.model, use_screenshot=args.use_screenshot)
+    config = AgentConfig(
+        model_name=args.model,
+        use_screenshot=args.use_screenshot,
+        use_ocr=args.use_ocr,
+        vision_model_name=args.vision_model
+    )
     agent_args = MyAgentArgs(config=config)
 
     harness = REAL.harness(
