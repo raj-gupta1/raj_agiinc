@@ -46,7 +46,7 @@ if __name__ == "__main__":
     parser.add_argument("--vision_model", type=str, default="gpt-4o", help="Vision model for OCR")
     parser.add_argument("--headless", type=str2bool, default=False, help="Run in headless mode")
     parser.add_argument("--use_screenshot", type=str2bool, default=True, help="Use screenshots")
-    parser.add_argument("--use_ocr", type=str2bool, default=True, help="Use visual OCR scan on screenshots")
+    parser.add_argument("--use_ocr", type=str2bool, default=False, help="Use visual OCR scan on screenshots")
     parser.add_argument("--no-cache", action="store_false", dest="use_cache", help="Disable caching and force a rerun")
     parser.add_argument("--leaderboard", type=str2bool, default=False, help="Submit to leaderboard")
     parser.add_argument("--run_id", type=str, default=None, help="Run ID for leaderboard submission")

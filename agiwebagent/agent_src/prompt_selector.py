@@ -1,15 +1,18 @@
+### agiwebagent/agent_src/prompt_selector.py
+
 import importlib
 import time
 from openai import OpenAI, RateLimitError
+from .config import AgentConfig
 
 class PromptSelector:
     PROMPT_PROFILES = {
         "ecommerce": {
-            "description": "Handles online shopping tasks like searching for products, adding items to a cart, viewing the cart, and completing the checkout process.",
+            "description": "Handles online shopping for PHYSICAL GOODS or general products (e.g., electronics, clothes). Handles searching, adding to cart, and checkout.",
             "path": "agent_src.prompts.omnizon_prompts"
         },
         "food_delivery": {
-            "description": "Handles food delivery tasks such as browsing restaurants, selecting menu items, customizing orders, and proceeding to checkout.",
+            "description": "Handles **ordering prepared food from restaurants** for delivery. Handles browsing restaurants, selecting menu items, customizing orders, and checkout. **Use this for ALL restaurant food tasks (e.g., pizza, burgers).**",
             "path": "agent_src.prompts.dashdish_prompts"
         },
         "flight_booking": {
@@ -75,7 +78,7 @@ class PromptSelector:
                 raise
 
     @staticmethod
-    def _select_profile_with_llm(goal: str, client: OpenAI):
+    def _select_profile_with_llm(goal: str, client: OpenAI, config: AgentConfig):
         profile_descriptions = "\n".join(f"- **{name}**: {data['description']}" for name, data in PromptSelector.PROMPT_PROFILES.items())
         system_prompt = f"""
             You are an expert routing system. Your task is to select the most appropriate "prompt profile" for the given user goal.
@@ -86,7 +89,7 @@ class PromptSelector:
         try:
             print("Prompt Selector: Calling LLM to route goal...")
             response = PromptSelector._call_llm_with_retry(
-                client=client, model="gpt-4o-mini",
+                client=client, model=config.parser_model_name,
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": f"User Goal: \"{goal}\""}],
                 temperature=0, max_tokens=25
             )
@@ -101,10 +104,10 @@ class PromptSelector:
             return "general_web_tasks"
 
     @staticmethod
-    def get_prompts(goal: str, client: OpenAI):
+    def get_prompts(goal: str, client: OpenAI, config: AgentConfig):
         print("\n" + "="*20 + " PROMPT SELECTION " + "="*20)
         print(f" Routing Goal: {goal}")
-        chosen_profile_name = PromptSelector._select_profile_with_llm(goal, client)
+        chosen_profile_name = PromptSelector._select_profile_with_llm(goal, client, config)
         fallback_profile_data = PromptSelector.PROMPT_PROFILES.get("general_web_tasks", {"path": PromptSelector.FALLBACK_PROMPTS_PATH})
         profile = PromptSelector.PROMPT_PROFILES.get(chosen_profile_name)
 

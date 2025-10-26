@@ -4,6 +4,7 @@ from openai import OpenAI
 from . import utils, llm_utils
 from .memory import AgentMemory
 
+
 class HighPerformanceAgent:
     def __init__(self, config, prompts):
         self.config = config
@@ -25,13 +26,14 @@ class HighPerformanceAgent:
         )
         return response.choices[0].message.content
 
-    def execute_step(self, obs: dict, plan: list, current_plan_step: int, memory: AgentMemory, action_desc: str, last_action_failed: bool) -> str:
+    def execute_step(self, obs: dict, plan: list, current_plan_step: int, memory: AgentMemory, action_desc: str,last_action_failed: bool, ocr_data_string: str) -> str:
         current_instruction = plan[current_plan_step]
         system_prompt_text = self.prompts.EXECUTION_SYSTEM_PROMPT.format(
             current_step_number=current_plan_step + 1,
             current_step_instruction=current_instruction
         )
         system_msgs = [{"type": "text", "text": system_prompt_text}]
+
         user_context = self.prompts.EXECUTION_USER_CONTEXT.format(
             goal=obs['goal'],
             plan="\n".join(f"{i + 1}. {s}" for i, s in enumerate(plan)),
@@ -40,21 +42,28 @@ class HighPerformanceAgent:
             current_step_instruction=current_instruction,
             history=memory.get_formatted_history(),
             axtree=obs['axtree_txt'],
-            ocr_data=obs.get('ocr_data', 'No OCR data available.')
+            ocr_data=ocr_data_string
         )
+
         user_msgs = [
             {"type": "text", "text": user_context},
             {"type": "text", "text": self.prompts.ACTION_SPACE_PROMPT.format(action_space=action_desc)},
             {"type": "text", "text": self.prompts.FEW_SHOT_EXAMPLE_PROMPT},
             {"type": "image_url", "image_url": {"url": utils.image_to_jpg_base64_url(obs["screenshot"])}}
         ]
+
         if last_action_failed and obs.get("last_action_error"):
+            last_thought = memory.get_last_thought()
+            last_action = memory.get_last_action()
+
             critique_prompt_text = self.prompts.SELF_CRITIQUE_PROMPT.format(
                 current_step_number=current_plan_step + 1,
                 error_message=obs['last_action_error'],
                 goal=obs['goal'],
                 current_step_instruction=current_instruction,
-                history=memory.get_formatted_history()
+                history=memory.get_formatted_history(),
+                last_thought=last_thought,
+                last_action=last_action
             )
             user_msgs.append({"type": "text", "text": critique_prompt_text})
 

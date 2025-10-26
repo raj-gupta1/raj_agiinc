@@ -30,3 +30,19 @@ class AgentMemory:
 
     def clear(self):
         self.steps = []
+
+    def get_last_thought(self) -> str:
+        """Returns the 'thought' (model response) of the very last step."""
+        if not self.steps:
+            return "No thought recorded."
+        return self.steps[-1].get('thought', 'Thought not recorded for last step.')
+
+    def get_last_action(self) -> str:
+        """Returns the 'action' string of the very last step."""
+        if not self.steps:
+            return "No action recorded."
+        return self.steps[-1].get('action', 'Action not recorded for last step.')
+
+
+
+

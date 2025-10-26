@@ -13,7 +13,6 @@ class UIElement(BaseModel):
     """Represents a single detected UI element on the page."""
     label: str = Field(description="The text content or label of the element.")
     type: str = Field(description="The type of element (e.g., 'button', 'text', 'heading', 'input', 'link').")
-    location: List[int] = Field(description="Bounding box coordinates as [x1, y1, x2, y2].")
 
 
 class VisualScanResult(BaseModel):
@@ -26,21 +25,21 @@ class VisionExtractor:
         self.client = client
         self.model = model
         self.system_prompt = """
-        You are an expert UI/UX analyst. Your task is to analyze a website screenshot
+        You are an expert UI content analyst. Your task is to analyze a website screenshot
         and return a structured JSON object of all visible UI elements.
-        
+
         You must identify:
         - All text (as 'text')
         - All buttons (as 'button')
         - All headings (as 'heading')
         - All input fields (as 'input')
         - All links (as 'link')
-        
+
         For each element, you MUST provide:
         1.  `label`: The text content of the element.
         2.  `type`: The type of element (e.g., 'button', 'text', 'heading').
-        3.  `location`: The bounding box coordinates `[x1, y1, x2, y2]`.
-        
+
+        Do NOT include bounding box coordinates or location data.
         Respond ONLY with the valid JSON object defined by the `VisualScanResult` schema.
         """
 
