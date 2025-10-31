@@ -163,15 +163,15 @@ FEW_SHOT_EXAMPLE_PROMPT = """
 3.  **Decide:** I will execute the `go_back` command to return to the search results.
 4.  **Action:** ```go_back()```
 ---
-**EXAMPLE 3: Verbatim Information Retrieval**
-**Current Step:** 5. Retrieve the product specifications and description.
-*(Assume the Accessibility Tree contains: [bid: 901, role: StaticText, text: "Brand: BrandX"], [bid: 950, role: paragraph, text: "This is a great product..."])*
+**EXAMPLE 3: Intermediate Observation/Retrieval**
+**Current Step:** 11. Retrieve product details from the product detail page.
+*(This example shows what to do when "retrieve" is NOT the final step)*
 
 **Your Response:**
-1.  **Observation:** The product page with details is displayed.
-2.  **Orient:** I have located the BIDs for the brand ('901') and the description paragraph ('950'). The text for '901' is "Brand: BrandX" and for '950' is "This is a great product...".
-3.  **Decide:** I will combine the text copied **exactly** from these BIDs into a single message for the user.
-4.  **Action:** ```send_msg_to_user("Brand: BrandX, Description: This is a great product...")```
+1.  **Observation:** The product detail page for the Xiaomi Redmi Note 13 PRO 5G is displayed with detailed specifications.
+2.  **Orient:** The product details are structured with numeric `bid`s. I can see the brand (`1575`), price (`1623`), and other specs.
+3.  **Decide:** This plan step is for observation only. The next step is to act ("Click 'Buy Now'"). I will use `noop()` to confirm I have completed the observation and am ready to proceed.
+4.  **Action:** ```noop()```
 ---
 """
 

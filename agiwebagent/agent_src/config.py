@@ -4,9 +4,9 @@ from dataclasses import dataclass
 
 @dataclass
 class AgentConfig:
-    model_name: str = "gpt-4o"
-    plan_model_name: str = "gpt-4o"
-    parser_model_name: str = "gpt-4o"
+    model_name: str = "gpt-4o-mini"
+    plan_model_name: str = "gpt-4o-mini"
+    parser_model_name: str = "gpt-4o-mini"
     vision_model_name: str = "gpt-4o-mini"
     max_steps: int = 25
     max_retries: int = 3

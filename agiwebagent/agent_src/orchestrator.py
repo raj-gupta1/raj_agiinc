@@ -66,9 +66,9 @@ class TaskOrchestrator:
         if code_blocks:
             action = code_blocks[-1].strip()
         else:
-            action_line = re.search(r"^\s*action:\s*(.*)", response_text, re.MULTILINE | re.IGNORECASE)
+            action_line = re.search(r"^\s*(\d\.)?\s*action:\s*(.*)", response_text, re.MULTILINE | re.IGNORECASE)
             if action_line:
-                action = action_line.group(1).strip()
+                action = action_line.group(2).strip()
 
         if action:
             match = re.match(r"fill\((['\"]?)(\d+)\1,\s*(['\"])(.*?)\3\)", action, re.DOTALL)
@@ -190,7 +190,10 @@ class TaskOrchestrator:
                     print(f"Action Result: Failed with error -> {error_after_action}")
                 else:
                     print("Action Result: Success")
-                if action.startswith("send_msg_to_user") or action.startswith("report_infeasible"):
+
+                print("!!! DEBUG: ORCHESTRATOR V2 CHECKING FINISH COMMAND !!!")
+
+                if action.startswith("report_infeasible"):
                     print("Agent has issued a finish command. Terminating task.")
                     return
 
