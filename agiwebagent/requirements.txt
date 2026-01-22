@@ -33,3 +33,9 @@ pydantic>=2.11.0,<3.0.0
 
 # LLM utilities
 instructor>=1.7.0,<2.0.0
+
+# Prompt optimization
+dspy-ai>=2.4.0,<3.0.0
+
+# Local browser automation
+browser-use>=0.2.0

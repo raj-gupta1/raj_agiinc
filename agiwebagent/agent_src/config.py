@@ -13,3 +13,6 @@ class AgentConfig:
     use_screenshot: bool = True
     use_axtree: bool = True
     use_ocr: bool = False
+    # DSPy optimization settings
+    use_dspy: bool = False  # Enable DSPy-optimized prompts
+    dspy_cache_dir: str = "dspy_cache"  # Directory for cached optimized modules

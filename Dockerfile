@@ -45,8 +45,8 @@ COPY agiwebagent/requirements.txt ./agiwebagent/
 RUN pip install --no-cache-dir -r requirements.txt \
     && pip install --no-cache-dir -r agiwebagent/requirements.txt
 
-# Install Playwright with only chromium
-RUN playwright install chromium --with-deps
+# Install Playwright browsers (chromium includes headless_shell required by agisdk)
+RUN playwright install --with-deps
 
 # Copy application code only (not results, etc.)
 COPY --chown=agent:agent agiwebagent/ ./agiwebagent/

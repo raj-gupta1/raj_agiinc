@@ -131,6 +131,27 @@ python agiwebagent/main.py --task_type networkin --headless true
 | `--vision_model` | Model for OCR/vision | `gpt-4o` |
 | `--use_ocr` | Enable visual OCR | `true` / `false` |
 
+### 🌐 Local Browser Agent (New!)
+
+Run the agent on **any website** with natural language goals using `local_agent.py`:
+
+```bash
+# Install dependencies
+pip install browser-use langchain-openai python-dotenv
+
+# Run on any website
+python agiwebagent/local_agent.py --goal "Go to amazon.com and search for wireless headphones"
+
+# Or with a specific starting URL
+python agiwebagent/local_agent.py --url "https://google.com" --goal "Search for Python tutorials"
+```
+
+| Argument | Description | Example |
+|----------|-------------|---------|
+| `--url` | Starting URL (optional) | `https://google.com` |
+| `--goal` | Task in natural language | `"Search for laptops"` |
+| `--model` | OpenAI model | `gpt-4o` |
+
 ---
 
 ## ⚙️ Configuration
