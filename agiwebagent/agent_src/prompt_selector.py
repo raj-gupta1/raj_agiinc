@@ -1,9 +1,9 @@
 ### agiwebagent/agent_src/prompt_selector.py
 
 import importlib
-import time
-from openai import OpenAI, RateLimitError
+from openai import OpenAI
 from .config import AgentConfig
+from . import llm_utils
 
 class PromptSelector:
     PROMPT_PROFILES = {
@@ -60,24 +60,6 @@ class PromptSelector:
     FALLBACK_PROMPTS_PATH = "agent_src.prompts.general_prompts"
 
     @staticmethod
-    def _call_llm_with_retry(client: OpenAI, **kwargs):
-        max_retries = 5
-        base_delay = 1
-        for i in range(max_retries):
-            try:
-                return client.chat.completions.create(**kwargs)
-            except RateLimitError:
-                if i < max_retries - 1:
-                    print(f"LLM rate limited. Retrying in {base_delay * (2 ** i)} seconds...")
-                    time.sleep(base_delay * (2 ** i))
-                else:
-                    print("LLM rate limit exceeded after max retries.")
-                    raise
-            except Exception as e:
-                print(f"An unexpected error occurred in LLM call: {e}")
-                raise
-
-    @staticmethod
     def _select_profile_with_llm(goal: str, client: OpenAI, config: AgentConfig):
         profile_descriptions = "\n".join(f"- **{name}**: {data['description']}" for name, data in PromptSelector.PROMPT_PROFILES.items())
         system_prompt = f"""
@@ -88,7 +70,7 @@ class PromptSelector:
             Available Profiles:\n{profile_descriptions}"""
         try:
             print("Prompt Selector: Calling LLM to route goal...")
-            response = PromptSelector._call_llm_with_retry(
+            response = llm_utils.call_llm_with_retry(
                 client=client, model=config.parser_model_name,
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": f"User Goal: \"{goal}\""}],
                 temperature=0, max_tokens=25

@@ -1,29 +1,35 @@
-playwright~=1.55.0
-pyparsing~=3.2.5
-gymnasium~=1.2.1
-numpy~=2.3.3
-pillow~=11.3.0
-agisdk~=0.2.9
-beautifulsoup4~=4.14.2
-requests~=2.32.5
-openai~=1.109.1
-jmespath~=1.0.1
-tqdm~=4.67.1
-tiktoken~=0.12.0
-ray~=2.50.0
-rich~=14.2.0
-python-dotenv~=1.1.1
-pandas==2.2.3
-playwright==1.51.0
-openai==1.70.0
-pydantic==2.11.1
-tabulate==0.9.0
-python-dotenv==1.1.0
-seaborn==0.13.2
-gradio==5.23.2
-pickleshare==0.7.5
-langsmith==0.3.21
-instructor==1.7.8
-litellm==1.65.1
-igraph==0.11.8
-plotly==6.0.1
+# AGI Web Agent Dependencies
+# Consolidated requirements with no duplicates
+
+# Core frameworks
+playwright>=1.51.0,<2.0.0
+gymnasium>=1.2.1,<2.0.0
+numpy>=2.0.0,<3.0.0
+pillow>=11.0.0,<12.0.0
+
+# AGI SDK
+agisdk>=0.2.9
+
+# Web scraping & parsing
+beautifulsoup4>=4.14.0,<5.0.0
+pyparsing>=3.2.0,<4.0.0
+
+# HTTP & API
+requests>=2.32.0,<3.0.0
+openai>=1.70.0,<2.0.0
+
+# Data processing
+jmespath>=1.0.0,<2.0.0
+tiktoken>=0.12.0,<1.0.0
+
+# Progress & display
+tqdm>=4.67.0,<5.0.0
+rich>=14.0.0,<15.0.0
+tabulate>=0.9.0,<1.0.0
+
+# Environment & config
+python-dotenv>=1.1.0,<2.0.0
+pydantic>=2.11.0,<3.0.0
+
+# LLM utilities
+instructor>=1.7.0,<2.0.0

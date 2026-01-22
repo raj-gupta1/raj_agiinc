@@ -76,7 +76,7 @@ if __name__ == "__main__":
         use_screenshot=config.use_screenshot,
         use_axtree=config.use_axtree,
         leaderboard=True,
-        run_id="1c997f74-2ea3-439d-8355-ef0b16404938",
+        run_id="81b8ec39-3a80-4143-b2f5-d1de51d12a73",
         num_workers=1
     )
 

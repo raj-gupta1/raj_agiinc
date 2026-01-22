@@ -1,5 +1,9 @@
+# Git
+.git
+.gitignore
+
 # Python
-__pycache__/
+__pycache__
 *.py[cod]
 *$py.class
 *.so
@@ -11,12 +15,12 @@ build/
 *.egg
 
 # Virtual environments
-.venv/
-venv/
-ENV/
-env/
-agienv/
-agiwebagent/agienv/
+.venv
+venv
+ENV
+env
+agienv
+agiwebagent/agienv
 
 # IDE
 .idea/
@@ -25,10 +29,8 @@ agiwebagent/agienv/
 *.swo
 *~
 
-# Environment files
+# Environment files (don't include secrets in image)
 .env
-agiwebagent/.env
-agisdk/.env
 .env.*
 !.env.example
 
@@ -36,14 +38,22 @@ agisdk/.env
 results/
 agiwebagent/results/
 result_images/
+*.log
 
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 
-# Logs
-*.log
+# Docker
+Dockerfile*
+docker-compose*.yml
+.docker/
+
+# Documentation
+*.md
+!README.md
+docs/
 
 # OS files
 .DS_Store
@@ -53,6 +63,3 @@ Thumbs.db
 *.tmp
 *.temp
 .cache/
-
-# Jupyter
-.ipynb_checkpoints/

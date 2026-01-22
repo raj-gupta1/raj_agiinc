@@ -1,145 +1,243 @@
-<h1>Raj's Web Agent </h1>
-1. This project contains a modular web agent designed to operate within the AGI SDK REAL benchmark. 
-<br>
-2. The agent is architected to be using a dynamic prompt-routing system to select the best strategy for a given task. 
-<br>
+# 🤖 AGI Web Agent
 
-<h2>System Architecture Diagram: </h2>
-<h3>
-https://miro.com/app/board/uXjVI86Rj0o=/?share_link_id=809744597370
-</h3>
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](Dockerfile)
 
-<h2>Current repo contains</h2>
-<h4>
+A modular web agent designed for the **AGI SDK REAL benchmark**, featuring dynamic prompt routing and Chain-of-Thought planning for autonomous web navigation.
 
-- Designed high level project architecture
-- Orchestrator routing to prompts, agent, config, prompt_selector, main.
-- Designed Memory and integration with MongoDB
-- Prompt Routing
-- LLM as a Judge
-- Implemented prompt papers like Chain of Thought prompting.
-- Prompt Creation for OMNIZON and NetworkIn.
-- Model testing
-- Setup and eval on realeval for OMNIZON and some tasks of NetworkIn.
-</h4>
+📐 **[System Architecture Diagram (Miro)](https://miro.com/app/board/uXjVI86Rj0o=/?share_link_id=809744597370)**
 
-<h2>Possible Improvements</h2>
-<h4>
+---
 
-- Integrating DSpy for better prompt creation and handling.
-- Using RL for post training maybe GRPO, PPO, continueous learning.
-- Testing with better LLMs and choose different LLMs for each role and cost optimisation.
-- Building on better browser-use, Nova-act frameworks and fine tune some parts of multi-modal LLM.
-</h4>
+## ✨ Key Features
 
+- **🧠 Modular Architecture** — High-level Orchestrator (project manager) + focused Agent (LLM specialist)
+- **🔀 Dynamic Prompt Routing** — Automatically selects task-specific prompts based on the goal
+- **💭 Chain-of-Thought Planning** — Self-verification step reviews plans for logical flaws before execution
+- **🔄 Advanced Self-Correction** — Detects stuck states and changes strategy to recover
+- **📋 Granular Planning** — Breaks down complex goals into single-action steps for reliability
 
-<h2>Future improvements</h2>
-<h4>
+---
 
-- The algo for capturing screenshots and BrowserGym’s HighLevelActionSet feature don't sync properly.
-- We can create a better map for button tasks, bid, action space by fine-tuning prompts or using more dedicated prompt with website workflow explanation.
-- Integrating with more agentic frameworks for cost and speed optimisation.
-</h4>
+## 📂 Project Structure
 
-
-<h2>Cost & Model Limitations</h2>
-<h4>
-
-- I am using cheap gpt-40-mini for everything but models can be changed through config.py and using multimodal reasoning models will significatly improve the performance.
-- Post training or using GRPO with DSpy can improve the performance significantly.
-</h4>
-
-
-
-<h1>🌟 Key Features</h1>
-
--  **Modular Architecture:** The agent's logic is separated into distinct components: a high-level Orchestrator (the project manager) and a focused Agent (the LLM specialist). 
-- **Dynamic Prompt Routing:** Uses a small, fast LLM to analyze the task goal and dynamically load the correct "instruction manual" (prompt file) for the specific website (e.g., Omnizon, DashDish). 
-- **Chain-of-Thought Planning:** The agent performs a "self-verification" step after creating a plan, critically reviewing it for logical flaws (like missing navigation steps) before execution begins. 
-- **Advanced Self-Correction & Recovery:** The agent can detect when it's stuck in a repetitive failure loop (e.g., endless scrolling, trying to click a blocked element) and will change its strategy to recover. 
-- **Planning:** Breaks down complex user goals into the smallest possible, single-action steps, which dramatically improves reliability, especially for multi-part UI interactions like selecting options in a dropdown.
-
-<h1>📂 Project Structure</h1>
-The agent's source code is located entirely within the agiwebagent/ directory.
-
-agiwebagent/<br>
-├── main.py                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # The main entry point to launch the agent.<br>
-├── requirements.txt        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Python dependencies.<br>
-└── agent_src/             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # The core source code for the agent.<br>
-    ├── __init__.py<br>
-    ├── agent.py           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # The "Specialist": Communicates with the LLM.<br>
-    ├── config.py          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Simple configuration data class.<br>
-    ├── memory.py           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Stores the history of actions for each step.<br>
-    ├── orchestrator.py     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# The "Manager": Oversees the entire task lifecycle.<br>
-    ├── prompt_selector.py  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# The "Strategy Advisor": Chooses the correct prompt file.<br>
-    ├── utils.py            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Helper functions (e.g., image conversion).<br>
-    └── prompts/            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Directory containing all specialized "brains".<br>
-        ├── __init__.py<br>
-        ├── dashdish_prompts.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# The brain for the DashDish food delivery site.<br>
-        └── omnizon_prompts.py  # The brain for the Omnizon e-commerce site.<br>
-
-
-
-<h1>🛠️ Setup Instructions</h1>
-Follow these steps from the root directory of the project (agiinc/).
-
-1. Create and Activate a Virtual Environment<br>
-It's highly recommended to use a virtual environment to manage dependencies.
-
-```bash
-python -m venv agienv
-
-source agienv/bin/activate
 ```
-(On Windows, use agienv\Scripts\activate)
-
-2. Install Dependencies <br>
-Install all the required Python packages from both the root requirements.txt and the agent's specific requirements.txt.
-```bash
-pip install -r requirements.txt
-
-pip install -r agiwebagent/requirements.txt
+agiinc/
+├── README.md
+├── requirements.txt              # Root dependencies
+├── Dockerfile                    # Docker support
+├── docker-compose.yml            # Easy orchestration
+│
+├── agiwebagent/                  # Web agent implementation
+│   ├── main.py                   # Entry point
+│   ├── requirements.txt          # Agent-specific dependencies
+│   └── agent_src/
+│       ├── agent.py              # LLM communication layer
+│       ├── config.py             # Configuration dataclass
+│       ├── memory.py             # Action history tracking
+│       ├── orchestrator.py       # Task lifecycle manager
+│       ├── prompt_selector.py    # Dynamic prompt routing
+│       ├── llm_utils.py          # LLM utilities with retry logic
+│       ├── vision_tools.py       # Visual OCR extraction
+│       ├── utils.py              # Helper functions
+│       └── prompts/              # Task-specific prompt files
+│           ├── omnizon_prompts.py
+│           ├── dashdish_prompts.py
+│           └── ...
+│
+└── agisdk/                       # AGI SDK (submodule/dependency)
 ```
 
-3. Set Up Your API Key <br>
-The agent requires an OpenAI API key to function.
-Create a file named .env in the root agiinc/ directory.
+---
 
-Add your API key to this file:
+## 🚀 Quick Start
+
+### Option 1: Local Installation
+
+1. **Create a virtual environment**
+   ```bash
+   python -m venv agienv
+   source agienv/bin/activate  # On Windows: agienv\Scripts\activate
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   pip install -r agiwebagent/requirements.txt
+   ```
+
+3. **Configure your API key**
+   
+   Copy the example environment file and add your API key:
+   ```bash
+   cp .env.example .env
+   # Edit .env and replace 'sk-your-api-key-here' with your actual OpenAI API key
+   ```
+
+4. **Run the agent**
+   ```bash
+   python agiwebagent/main.py --task_name webclones.omnizon-1 --headless true
+   ```
+
+### Option 2: Docker (Recommended)
+
+1. **Configure your API key**
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your OpenAI API key
+   ```
+
+2. **Build and run**
+   ```bash
+   docker compose build
+   docker compose run --rm agiwebagent \
+     --task_name webclones.omnizon-1 \
+     --headless true
+   ```
+
+---
+
+## 📖 Usage
+
+### Running a Single Task
 
 ```bash
-OPENAI_API_KEY="sk-YourSecretAPIKeyHere"
+python agiwebagent/main.py --task_name webclones.omnizon-1 --no-cache --headless true
 ```
 
-<h1>🚀 Running the Agent </h1>
-All commands should be run from the root agiinc/ directory. The main script is located at agiwebagent/main.py.
+### Running a Full Task Suite
 
-Running a Single Task<br>
-To run a specific, named task, use the --task_name argument. This is perfect for debugging.
-
-Example (networkin):
 ```bash
-python agiwebagent/main.py --task_name webclones.networkin-3 --no-cache --headless true
+# Run all Omnizon (e-commerce) tasks
+python agiwebagent/main.py --task_type omnizon --headless true
+
+# Run all DashDish (food delivery) tasks
+python agiwebagent/main.py --task_type dashdish --headless true
+
+# Run all NetworkIn (professional networking) tasks
+python agiwebagent/main.py --task_type networkin --headless true
 ```
 
-Running a Full Task Suite<br>
-To run all tasks for a specific website (like all 10 omnizon tasks), use the --task_type argument. This is ideal for benchmarking.
-
-Example (Run all networkin tasks):
-```bash
-python agiwebagent/main.py --task_type networkin --no-cache --headless true
-```
-
-Example (Run all Omnizon tasks):
-```bash
-python agiwebagent/main.py --task_type omnizon --no-cache --headless true
-```
-
+### Command-Line Arguments
 
 | Argument | Description | Example |
 |----------|-------------|---------|
-| `--task_name` | Runs a single, specific task by its full ID. | `webclones.dashdish-2` |
-| `--task_type` | Runs all tasks belonging to a specific benchmark suite. | `dashdish`, `omnizon` |
-| `--headless` | `true` or `false`. Runs the browser in the background (`true`) or shows the UI (`false`). Default is `false`. | `--headless true` |
-| `--no-cache` | Disables caching and forces the agent to re-run the task from scratch. Highly recommended for testing changes. | `--no-cache` |
-| `--model` | Specifies the OpenAI model to use for the main agent. | `--model gpt-4o` |
+| `--task_name` | Run a single task by ID | `webclones.omnizon-1` |
+| `--task_type` | Run all tasks of a type | `omnizon`, `dashdish` |
+| `--headless` | Run browser in background | `true` / `false` |
+| `--no-cache` | Force re-run without cache | Flag |
+| `--model` | OpenAI model for main agent | `gpt-4o`, `gpt-4o-mini` |
+| `--vision_model` | Model for OCR/vision | `gpt-4o` |
+| `--use_ocr` | Enable visual OCR | `true` / `false` |
+
+---
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `OPENAI_API_KEY` | Your OpenAI API key | ✅ Yes |
+
+### Agent Configuration
+
+Edit `agiwebagent/agent_src/config.py` to customize:
+
+```python
+@dataclass
+class AgentConfig:
+    model_name: str = "gpt-4o"          # Main execution model
+    plan_model_name: str = "gpt-4o"     # Planning model
+    parser_model_name: str = "gpt-4o-mini"  # Prompt routing model
+    vision_model_name: str = "gpt-4o"   # OCR/vision model
+    max_steps: int = 25                 # Max steps per task
+    max_retries: int = 3                # Max plan generation retries
+    use_screenshot: bool = True         # Include screenshots
+    use_axtree: bool = True             # Include accessibility tree
+    use_ocr: bool = False               # Enable visual OCR
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**1. Playwright browsers not installed**
+```bash
+playwright install chromium
+playwright install-deps
+```
+
+**2. Rate limit errors**
+The agent has built-in exponential backoff retry logic. If you're hitting limits frequently, consider:
+- Using a model with higher rate limits
+- Reducing parallel execution
+
+**3. Docker display issues (headed mode)**
+For headed mode in Docker on Linux:
+```bash
+xhost +local:docker
+docker-compose run --rm agiwebagent --headless false
+```
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        main.py                              │
+│                    (Entry Point)                            │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    TaskOrchestrator                         │
+│              (Manages task lifecycle)                       │
+│  • Creates plans  • Handles errors  • Tracks progress       │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+              ┌────────────┴────────────┐
+              ▼                         ▼
+┌──────────────────────┐    ┌──────────────────────┐
+│   PromptSelector     │    │  HighPerformanceAgent │
+│ (Routes to prompts)  │    │    (LLM Interface)    │
+└──────────────────────┘    └──────────────────────┘
+              │                         │
+              ▼                         ▼
+┌──────────────────────┐    ┌──────────────────────┐
+│  prompts/*.py        │    │    AgentMemory       │
+│ (Task-specific)      │    │  (History tracking)  │
+└──────────────────────┘    └──────────────────────┘
+```
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] Integrate DSPy for better prompt optimization
+- [ ] Add RL post-training (GRPO, PPO)
+- [ ] Test with different LLMs for role-based cost optimization
+- [ ] Build on Nova-act and browser-use frameworks
+- [ ] Fine-tune multimodal LLM components
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request

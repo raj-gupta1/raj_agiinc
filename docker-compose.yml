@@ -1,0 +1,48 @@
+# AGI Web Agent - Docker Compose Configuration
+# Simplifies running the agent with all required services
+
+services:
+  agiwebagent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agiwebagent
+
+    # Environment variables - use .env file for API keys
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DISPLAY=${DISPLAY:-:0}
+
+    # Mount volumes for persistence
+    volumes:
+      # Persist results
+      - ./results:/app/results
+      # Persist agiwebagent results
+      - ./agiwebagent/results:/app/agiwebagent/results
+      # For headed mode on Linux (X11 forwarding)
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+
+    # Resource limits (optional, adjust as needed)
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+
+    # Default command (can be overridden)
+    command: [ "--help" ]
+
+  # Development mode with code mounting
+  dev:
+    extends:
+      service: agiwebagent
+    container_name: agiwebagent-dev
+    volumes:
+      - .:/app
+      - ./results:/app/results
+    command: [ "--help" ]
